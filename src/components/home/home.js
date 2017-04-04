@@ -11,9 +11,14 @@ var Home = React.createClass({
         return (
             <div>
                 <div className="App">
+                    <h1 className="title">Title</h1>
                     <div className="App-header">
                         <h2>Welcome to React</h2>
+                        <p>New Scting Andrey</p>
                     </div>
+					<div className="App-string">
+						<h4>Some string</h4>
+					</div>
                     <p className="App-intro">
                         <button onClick={this.onClickHandler}>Get Started</button>
                     </p>
