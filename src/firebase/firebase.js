@@ -3,13 +3,22 @@ import firebase from 'firebase';
 try
 {
 
+//     var config = {
+//     apiKey: "AIzaSyDUrve5V2jap_jM27aoRX3Eqv-g9z6RR1Y",
+//     authDomain: "reactapp-b838f.firebaseapp.com",
+//     databaseURL: "https://reactapp-b838f.firebaseio.com",
+//     storageBucket: "reactapp-b838f.appspot.com",
+//     messagingSenderId: "250175130066"
+// };
     var config = {
-    apiKey: "AIzaSyDUrve5V2jap_jM27aoRX3Eqv-g9z6RR1Y",
-    authDomain: "reactapp-b838f.firebaseapp.com",
-    databaseURL: "https://reactapp-b838f.firebaseio.com",
-    storageBucket: "reactapp-b838f.appspot.com",
-    messagingSenderId: "250175130066"
-};
+        apiKey: "AIzaSyBoyo6rPXCrFJow0YpD3GLuzGt6CEVLmbo",
+        authDomain: "cashback-473c1.firebaseapp.com",
+        databaseURL: "https://cashback-473c1.firebaseio.com",
+        projectId: "cashback-473c1",
+        storageBucket: "cashback-473c1.appspot.com",
+        messagingSenderId: "577495924368"
+    };
+
     firebase.initializeApp(config);
 }
 catch(e){

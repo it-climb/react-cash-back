@@ -1,15 +1,16 @@
 import React              from 'react';
 import {connect}          from 'react-redux';
-import {hashHistory} from 'react-router';
+import {hashHistory}    from 'react-router';
 
 import {lostFocusUserAction} from './../../actions/actions';
-import PaymentList from '../payments/payments-list';
+// import PaymentList from '../payments/payments-list';
 
 var UserDetails = React.createClass({
 
     render: function () {
 
-        let {id, name, age, payments} = this.props.selectedUser;
+        // let {id, name, age, payments} = this.props.selectedUser;
+        let {id, name} = this.props.selectedUser;
 
         if(!this.props.selectedUser) {
             return (
@@ -24,7 +25,7 @@ var UserDetails = React.createClass({
                 <div>
                     <h1>USER DETAILS</h1>
                     <div><label>Name: {name}</label></div>
-                    <div><label>Age: {age}</label></div>
+                    {/*<div><label>Age: {age}</label></div>*/}
                     <button onClick={this.onGoBackHandler}>Previous page</button>
                     <PaymentList/>
                 </div>
