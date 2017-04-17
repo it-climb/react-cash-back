@@ -10,18 +10,20 @@ var UsersAdd = React.createClass({
         let {dispatch} = this.props;
 
         let name = this.refs.name.value;
-        let age  = this.refs.age.value;
+        // let age  = this.refs.age.value;
 
-        if(typeof name === 'string' && typeof parseInt(age) === 'number'){
-            if (name.length > 0 && parseInt(age) > 0){
+        // if(typeof name === 'string' && typeof parseInt(age) === 'number'){
+        if(typeof name === 'string' ){
+            if (name.length > 0 ){
+            // if (name.length > 0 && parseInt(age) > 0){
 
                 this.refs.name.value = '';
-                this.refs.age.value = '';
+                // this.refs.age.value = '';
 
                 dispatch(startAddUserAction({
                     name: name,
-                    age: age,
-                    payments: []
+                    // age: age,
+                    // payments: []
                 }));
             }
         }
@@ -40,8 +42,8 @@ var UsersAdd = React.createClass({
                         <input type="text" className="form-control" ref="name"/>
                     </div>
                     <div className="form-group">
-                        <label>Age:</label>
-                        <input type="text" className="form-control"  ref="age"/>
+                        {/*<label>Age:</label>*/}
+                        {/*<input type="text" className="form-control"  ref="age"/>*/}
                     </div>
 
                     <button className="btn btn-default">Submit</button>
