@@ -1,6 +1,5 @@
 -- Language=PostgreSQL
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
--- CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
 
 CREATE TABLE IF NOT EXISTS banks  (
   bank_id         UUID          NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
