@@ -9,11 +9,12 @@ import { Router,
 import firebase,
        {firebaseRef}    from './firebase/firebase';
 
-import Main             from './components/main/main';
-import TitleDashboard   from './components/title_dashboard/title_dashboard';
+import Main             from './components/main/Main';
+import TitleDashboard   from './components/title_dashboard/TitleDashboard';
+import Login            from './components/login/Login';
+
 import UsersList        from './components/users/users-list';
 import UserDetails      from './components/users/user-details';
-import Login            from './components/login/Login';
 import store            from './store/store';
 
 import './style/style.scss';
