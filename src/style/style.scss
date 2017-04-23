@@ -2,6 +2,7 @@ $body-bg-image-url: "https://drive.google.com/uc?export=download&confirm=no_anti
 $title-top-bg-image-url: "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B9DMHuMlIwnQQzZrVmJaal9vYmM";
 $body-bg-color: #bddbad;
 
+
 body {
     background-color: $body-bg-color;
     background-image: url($body-bg-image-url);
