@@ -1,5 +1,5 @@
 ----
-INSERT INTO roles (id, name, title, description)
+INSERT INTO roles (role_id, name, title, description)
 VALUES
   (uuid_generate_v4(), 'admin', 'Admin', 'Admin'),
   (uuid_generate_v4(), 'bank', 'Bank', 'Bank'),
