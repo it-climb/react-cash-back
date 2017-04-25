@@ -9,6 +9,13 @@ CREATE TABLE IF NOT EXISTS banks  (
   updated_at TIMESTAMPTZ   NOT NULL DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS cost_groups  (
+  cost_group_id         UUID          NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
+  name      VARCHAR(70) NOT NULL,
+  created_at TIMESTAMPTZ   NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ   NOT NULL DEFAULT now()
+);
+
 --   id             UUID DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
 --   email          citext                          NOT NULL CONSTRAINT users_email_idx UNIQUE,
 --   email_verified BOOLEAN                         NOT NULL DEFAULT FALSE,
