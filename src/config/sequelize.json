@@ -2,9 +2,9 @@
   "development": {
     "host": "localhost",
     "driver": "postgres",
-    "database": "none",
-    "username": "none",
-    "password": "none",
+    "database": "cashe",
+    "username": "postgres",
+    "password": "1",
     "port": 5432,
     "protocol": "tcp",
     "maxConcurrentQueries": 50,
