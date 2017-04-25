@@ -15,6 +15,14 @@ CREATE TABLE IF NOT EXISTS cost_groups  (
   created_at TIMESTAMPTZ   NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ   NOT NULL DEFAULT now()
 );
+CREATE TABLE IF NOT EXISTS costs  (
+  cost_id         UUID          NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
+  cost_group_id   UUID NOT NULL REFERENCES cost_groups(cost_group_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
+  name      VARCHAR(70) NOT NULL,
+  created_at TIMESTAMPTZ   NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ   NOT NULL DEFAULT now()
+);
+
 
 --   id             UUID DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
 --   email          citext                          NOT NULL CONSTRAINT users_email_idx UNIQUE,
