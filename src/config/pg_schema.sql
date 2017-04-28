@@ -9,6 +9,36 @@ CREATE TABLE IF NOT EXISTS banks  (
   updated_at TIMESTAMPTZ   NOT NULL DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS cost_groups  (
+  cost_group_id         UUID          NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
+  name      VARCHAR(70) NOT NULL,
+  created_at TIMESTAMPTZ   NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ   NOT NULL DEFAULT now()
+);
+CREATE TABLE IF NOT EXISTS costs  (
+  cost_id         UUID          NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
+  cost_group_id   UUID NOT NULL REFERENCES cost_groups(cost_group_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
+  name      VARCHAR(70) NOT NULL,
+  created_at TIMESTAMPTZ   NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ   NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS roles (
+  role_id        uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
+  name           character varying(50) NOT NULL,
+  title          character varying(100) NOT NULL,
+  description    text,
+  created_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL,
+  updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS professions (
+  profession_id        uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
+  name           character varying(50) NOT NULL,
+  created_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL,
+  updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
+);
+
 --   id             UUID DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
 --   email          citext                          NOT NULL CONSTRAINT users_email_idx UNIQUE,
 --   email_verified BOOLEAN                         NOT NULL DEFAULT FALSE,
@@ -22,14 +52,7 @@ CREATE TABLE IF NOT EXISTS banks  (
 --
 -- ALTER TABLE users OWNER TO postgres;
 --
-CREATE TABLE IF NOT EXISTS roles (
-  role_id        uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
-  name           character varying(50) NOT NULL,
-  title          character varying(100) NOT NULL,
-  description    text,
-  created_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL,
-  updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
-);
+
 --
 -- ALTER TABLE roles OWNER TO postgres;
 --
