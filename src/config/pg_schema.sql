@@ -23,6 +23,21 @@ CREATE TABLE IF NOT EXISTS costs  (
   updated_at TIMESTAMPTZ   NOT NULL DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS roles (
+  role_id        uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
+  name           character varying(50) NOT NULL,
+  title          character varying(100) NOT NULL,
+  description    text,
+  created_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL,
+  updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS professions (
+  profession_id        uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
+  name           character varying(50) NOT NULL,
+  created_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL,
+  updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
+);
 
 --   id             UUID DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
 --   email          citext                          NOT NULL CONSTRAINT users_email_idx UNIQUE,
@@ -37,14 +52,7 @@ CREATE TABLE IF NOT EXISTS costs  (
 --
 -- ALTER TABLE users OWNER TO postgres;
 --
-CREATE TABLE IF NOT EXISTS roles (
-  role_id        uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
-  name           character varying(50) NOT NULL,
-  title          character varying(100) NOT NULL,
-  description    text,
-  created_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL,
-  updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
-);
+
 --
 -- ALTER TABLE roles OWNER TO postgres;
 --
