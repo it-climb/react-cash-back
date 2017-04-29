@@ -21,7 +21,7 @@ var User = React.createClass({
         dispatch(startUpdateUserAction({
             id: this.state.id,
             name: this.state.name,
-            age: this.state.age
+            // age: this.state.age
         }));
     },
 
@@ -54,12 +54,12 @@ var User = React.createClass({
                 </td>
 
                 <td>
-                    <input type="text" value={this.state.age} ref="age" onChange={()=>{
-                        let age = this.refs.age.value;
-                        this.setState({
-                            age
-                        });
-                    }}/>
+                    {/*<input type="text" value={this.state.age} ref="age" onChange={()=>{*/}
+                        {/*/!*let age = this.refs.age.value;*!/*/}
+                        {/*this.setState({*/}
+                            {/*/!*age*!/*/}
+                        {/*});*/}
+                    {/*}}/>*/}
                 </td>
                 <td>
                     <button onClick={this.onDeleteUser}>X</button>
