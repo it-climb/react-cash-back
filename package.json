@@ -12,12 +12,12 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
-    "pg": "^6.1.5",
-    "pg-hstore": "^2.3.2",
     "firebase": "^3.6.9",
     "hover.css": "^2.0.2",
     "lodash": "^4.17.4",
     "node-uuid": "^1.4.7",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.4.2",
@@ -25,6 +25,7 @@
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.3",
     "sequelize": "^3.30.4",
     "svg-inline-loader": "^0.7.1"
   },

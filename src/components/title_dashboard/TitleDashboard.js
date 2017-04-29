@@ -11,8 +11,8 @@ var TitleDashboard = React.createClass({
             <div>
                 <TitleTop/>
                 <TitleMiddle/>
-                <div className="img_title_middle">
-                </div>
+                {/*<div className="img_title_middle">*/}
+                {/*</div>*/}
                 {/*TitleBottom*/}
                 <div className="img_title_bottom">
                 </div>
