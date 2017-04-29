@@ -1,15 +1,19 @@
 import React from 'react';
-import NavBar from './../navigationBar/navBar';
+import TitleTopNav      from './../title_top_nav/TitleTopNav';
+
 
 var Main = React.createClass({
     render: function () {
         return (
         <div>
-            <NavBar/>
+            <TitleTopNav/>
             <div className="container">
                 <div>
                     {this.props.children}
                 </div>
+            </div>
+            {/*TitleBottomNav*/}
+            <div className="img_title_bottom_nav">
             </div>
         </div>
         )

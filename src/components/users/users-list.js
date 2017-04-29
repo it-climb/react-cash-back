@@ -34,7 +34,6 @@ var UsersList = React.createClass({
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Age</th>
                         <th>Delete</th>
                         <th>Save Changes</th>
                     </tr>
@@ -51,7 +50,4 @@ var UsersList = React.createClass({
     }
 });
 
-export default connect(
-    (state) => {
-        return state;
-    })(UsersList);
+export default connect((state) => {return state;})(UsersList);

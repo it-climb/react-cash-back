@@ -1,0 +1,11 @@
+$body-bg-image-url: "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B9DMHuMlIwnQUThjVnN5a05TVFk";
+$body-bg-color: #bddbad;
+
+body {
+  background-color: $body-bg-color;
+  background-image: url($body-bg-image-url);
+  background-position: 0px -20px;
+  background-size: 100% 2000px;
+}
+
+
