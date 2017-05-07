@@ -1,12 +1,15 @@
 import React from 'react';
 import {connect}  from 'react-redux';
-import { Link }   from 'react-router';
+import { Link, browserHistory }   from 'react-router';
 import {startLogoutAction} from './../../actions/actions';
 import _ from 'lodash';
 import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar, Table} from "react-bootstrap";
 
 
 var TitleTopNav = React.createClass({
+    _handleGoTo(goToPage) {
+        return browserHistory.push.bind(browserHistory, goToPage);
+    },
 
     render: function () {
         return (
@@ -28,12 +31,8 @@ var TitleTopNav = React.createClass({
                     <Col lg={5} md={5} sm={5} xs={5}>
                     <div className="title-top-nav-right">
                         <Row>
-                            <div onClick = '' className = 'title-top-nav-button'>
-                                Вход
-                            </div>
-                            <div onClick = '' className = 'title-top-nav-button'>
-                                Регистрация
-                            </div>
+                            <Link to="/login" className="title-top-nav-button" activeStyle={{fontWeight: 'bold'}}>Вход</Link>
+                            <Link to="/registration" className="title-top-nav-button"  activeStyle={{fontWeight: 'bold'}}>Регистрация</Link>
                         </Row>
                     </div>
                     </Col>
