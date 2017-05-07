@@ -13,6 +13,7 @@ import Main             from './components/main/Main';
 import TitleDashboard   from './components/title_dashboard/TitleDashboard';
 import Login            from './components/login/Login';
 import Registration     from './components/registration/Registration';
+import ForgotPassword     from './components/forgot_password/ForgotPassword';
 
 import UsersList        from './components/users/users-list';
 import UserDetails      from './components/users/user-details';
@@ -29,8 +30,9 @@ ReactDOM.render(
                 {/*<IndexRoute component={TitleDashboard}/>*/}
                 <IndexRoute component={TitleDashboard}/>
                 {/*<Route path="*" component={NoMatch}/>*/}
-                <Route path="login" component={Login}/>
                 <Route path="registration" component={Registration}/>
+                <Route path="login" component={Login}/>
+                <Route path="forgot_password" component={ForgotPassword}/>
             </Route>
         </Router>
     </Provider>
