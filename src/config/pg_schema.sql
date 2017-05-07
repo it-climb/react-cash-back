@@ -39,6 +39,19 @@ CREATE TABLE IF NOT EXISTS professions (
   updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS users (
+  user_id  uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+  profession_id UUID NOT NULL REFERENCES professions(profession_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
+  email VARCHAR(100) NOT NULL,
+  login VARCHAR(50) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  role_id UUID NOT NULL REFERENCES roles(role_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
+  created_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL,
+  updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
+);
+
 --   id             UUID DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
 --   email          citext                          NOT NULL CONSTRAINT users_email_idx UNIQUE,
 --   email_verified BOOLEAN                         NOT NULL DEFAULT FALSE,
