@@ -18,7 +18,7 @@ export default React.createClass({
         if (!!currentUser) {
             return browserHistory.push('/');
         }
-    },default
+    },
     _handleGoTo(goToPage) {
         return browserHistory.push.bind(browserHistory, goToPage);
     },
