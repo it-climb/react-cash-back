@@ -6,21 +6,21 @@ import _ from 'lodash';
 import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar, Table} from "react-bootstrap";
 
 
-var Login = React.createClass({
+var Registration = React.createClass({
 
     componentWillMount(){
-        console.log("Login componentWilMount");
+        console.log("Registrtion componentWilMount");
     },
 
     render: function () {
-        console.log("Login.js 16");
+        console.log("Registrtion.js 16");
         return (
             <div className = "title-top-nav">
-                Login. Привет. Ведутся рабо...
+                Registration. Привет. Ведутся рабо...
             </div>
         );
     }
 });
 
-export default Login;
+export default Registration;
 
