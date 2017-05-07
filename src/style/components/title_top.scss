@@ -1,0 +1,14 @@
+$title-top-bg-image-url: "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=0B9DMHuMlIwnQQzZrVmJaal9vYmM";
+
+.title-top{
+  width: 100%;
+  height: 565px;
+  background-color: #bddbad;
+  background-image: url($title-top-bg-image-url);
+  background-size: 100% 570px;
+}
+.img_title_top {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
