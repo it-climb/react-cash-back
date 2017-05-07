@@ -30,7 +30,7 @@ ReactDOM.render(
                 {/*<IndexRoute component={TitleDashboard}/>*/}
                 <IndexRoute component={TitleDashboard}/>
                 {/*<Route path="*" component={NoMatch}/>*/}
-                <Route path="login" component={Login}/>
+                <Route path="registration" component={Registration}/>
                 <Route path="login" component={Login}/>
                 <Route path="forgot_password" component={ForgotPassword}/>
             </Route>
