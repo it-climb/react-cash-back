@@ -12,6 +12,7 @@ import firebase,
 import Main             from './components/main/Main';
 import TitleDashboard   from './components/title_dashboard/TitleDashboard';
 import Login            from './components/login/Login';
+import Registration     from './components/registration/Registration';
 
 import UsersList        from './components/users/users-list';
 import UserDetails      from './components/users/user-details';
@@ -25,9 +26,11 @@ ReactDOM.render(
             <Route path="/" component={Main}>
                 {/*<Route path="users" component={UsersList} onEnter={requireAuth}/>*/}
                 {/*<Route path="user-details" component={UserDetails} onEnter={requireAuth}/>*/}
+                {/*<IndexRoute component={TitleDashboard}/>*/}
                 <IndexRoute component={TitleDashboard}/>
                 {/*<Route path="*" component={NoMatch}/>*/}
-                {/*<Route path="login" component={Login}/>*/}
+                <Route path="login" component={Login}/>
+                <Route path="registration" component={Registration}/>
             </Route>
         </Router>
     </Provider>
