@@ -4,7 +4,7 @@
     "driver": "postgres",
     "database": "cashe",
     "username": "postgres",
-    "password": "1",
+    "password": "agios",
     "port": 5432,
     "protocol": "tcp",
     "maxConcurrentQueries": 50,

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect}  from 'react-redux';
-import TitleTop         from 'TitleTop';
-import TitleMiddle      from '../title_middle/TitleMiddle';
+import TitleTop         from '../title_top/TitleTop';
+// import TitleMiddle      from '../title_middle/TitleMiddle';
 import TitleBottom      from '../title_bottom/TitleBottom';
 
 var TitleDashboard = React.createClass({
@@ -11,7 +11,7 @@ var TitleDashboard = React.createClass({
             <div>
                 <h1>Hello</h1>
                 <TitleTop/>
-                <TitleMiddle/>
+                {/*<TitleMiddle/>*/}
                 <TitleBottom/>
             </div>
         )

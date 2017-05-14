@@ -9,34 +9,34 @@ class TitleMiddle extends React.Component {
 
         return (
             <div className="section-cash-back">
-                <h2>Банковский КБ</h2>
+                {/*<h2>Банковский КБ</h2>*/}
 
-                <Grid>
-                    <Row>
-                        <Col xs={6}>
-                            <Checkbox>КБ за использование денежных средств</Checkbox>
-                            <RangeSlider value="0" step="10" maxValue="100"/>
-                        </Col>
-                        <Col xs={6}>
-                            <Checkbox>КБ на остаток</Checkbox>
-                            <RangeSlider value="0" step="10" maxValue="100"/>
-                        </Col>
-                    </Row>
-                </Grid>
+                {/*<Grid>*/}
+                    {/*<Row>*/}
+                        {/*<Col xs={6}>*/}
+                            {/*<Checkbox>КБ за использование денежных средств</Checkbox>*/}
+                            {/*<RangeSlider value="0" step="10" maxValue="100"/>*/}
+                        {/*</Col>*/}
+                        {/*<Col xs={6}>*/}
+                            {/*<Checkbox>КБ на остаток</Checkbox>*/}
+                            {/*<RangeSlider value="0" step="10" maxValue="100"/>*/}
+                        {/*</Col>*/}
+                    {/*</Row>*/}
+                {/*</Grid>*/}
 
-                <Grid>
-                    <Row>
-                        <Col xs={6} md={4}>
-                            <Card title="card 1" ></Card>
-                        </Col>
-                        <Col xs={6} md={4}>
-                            <Card title="card 2"></Card>
-                        </Col>
-                        <Col xs={6} md={4}>
-                            <Card title="card 3"></Card>
-                        </Col>
-                    </Row>
-                </Grid>
+                {/*<Grid>*/}
+                    {/*<Row>*/}
+                        {/*<Col xs={6} md={4}>*/}
+                            {/*<Card title="card 1" ></Card>*/}
+                        {/*</Col>*/}
+                        {/*<Col xs={6} md={4}>*/}
+                            {/*<Card title="card 2"></Card>*/}
+                        {/*</Col>*/}
+                        {/*<Col xs={6} md={4}>*/}
+                            {/*<Card title="card 3"></Card>*/}
+                        {/*</Col>*/}
+                    {/*</Row>*/}
+                {/*</Grid>*/}
             </div>
         );
     }
