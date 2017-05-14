@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect}  from 'react-redux';
 
-import {startLoginWithEmailAndPassword} from './../../actions/actions';
 
 const Login = React.createClass({
 
