@@ -13,8 +13,8 @@ var Main = React.createClass({
                 </div>
             </div>
             {/*TitleBottomNav*/}
-            <div className="img_title_bottom_nav">
-            </div>
+            {/*<div className="img_title_bottom_nav">*/}
+            {/*</div>*/}
         </div>
         )
     }

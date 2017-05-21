@@ -14,11 +14,11 @@ class TitleMiddle extends React.Component {
                 <Grid>
                     <Row>
                         <Col xs={6}>
-                            <Checkbox>Checkbox 1</Checkbox>
+                            <Checkbox>КБ за использование денежных средств</Checkbox>
                             <RangeSlider value="0" step="10" maxValue="100"/>
                         </Col>
                         <Col xs={6}>
-                            <Checkbox>Checkbox 2</Checkbox>
+                            <Checkbox>КБ на остаток</Checkbox>
                             <RangeSlider value="0" step="10" maxValue="100"/>
                         </Col>
                     </Row>
