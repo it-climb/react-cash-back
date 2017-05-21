@@ -1,24 +1,19 @@
 'use strict';
 
 const
-    modelName = 'Bank';
+    modelName = 'Tests';
 
 module.exports = (sequelize, DataTypes)=> {
 
-    const Bank = sequelize.define(modelName, {
-            bankId: {
-                field: 'bank_id',
+    const Tests = sequelize.define(modelName, {
+            id: {
+                field: 'id',
                 type: DataTypes.UUID,
                 primaryKey: true
             },
-            mfo: {
-                type: DataTypes.INTEGER,
-                allowNull: false
-            },
-            name: {
-                type: DataTypes.STRING(100),
+            title: {
+                type: DataTypes.STRING,
                 allowNull: false,
-                defaultValue: ''
             },
             createdAt: {
                 type: DataTypes.DATE,
@@ -29,7 +24,7 @@ module.exports = (sequelize, DataTypes)=> {
                 field: 'updated_at'
             }
         }, {
-            tableName: 'banks',
+            // tableName: 'test',
             // classMethods: {
             //     associate: (models) {
             //         // this.belongsTo(models['Bank'], {as: 'Bank', foreignKey: 'bankId'});
@@ -38,5 +33,5 @@ module.exports = (sequelize, DataTypes)=> {
             // }
 
         });
-    return Bank;
+    return Tests;
 };
