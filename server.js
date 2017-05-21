@@ -1,7 +1,7 @@
-var express = require('express');
+const express = require('express');
 
 // Create our app
-var app = express();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(function (req, res, next){
@@ -13,6 +13,11 @@ app.use(function (req, res, next){
 });
 
 app.use(express.static('public'));
+
+app.get("/test", function(req, res){
+    console.log('test');
+    res.send('Hello from Yura!');
+});
 
 app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);
