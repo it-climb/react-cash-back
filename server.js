@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'), routes = require('./src/routes');
 
 // Create our app
 const app = express();
@@ -14,10 +14,10 @@ app.use(function (req, res, next){
 
 app.use(express.static('public'));
 
-app.get("/test", function(req, res){
-    console.log('test');
-    res.send('Hello from Task1!');
-});
+console.log('server routes:', routes);
+
+app.use('/', routes);
+
 
 app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);

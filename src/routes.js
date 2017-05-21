@@ -1,16 +1,18 @@
 'use strict';
+const express = require('express');
+const router = express.Router();
 
 let finder = require('fs-finder'),
     _ = require('lodash'),
     routes = [];
 
-function loadRoutesData(routeStorage) {
-    return _.flatten(finder.from('src/').findFiles("route.js").reduce((storage, file) => {
+module.exports =  _.flatten(finder.from('src/').findFiles("route.js").reduce((storage, file) => {
         storage.push(require(file));
         return storage;
-    }, routeStorage));
-}
-/**
- * @exports routes
- */
-module.exports = loadRoutesData(routes);
+    }, routes)).map(function(route) {
+            return router[route.method.toLowerCase()](
+                route.path,
+                route.handler
+            );
+    });
+
