@@ -16,7 +16,7 @@ app.use(express.static('public'));
 
 app.get("/test", function(req, res){
     console.log('test');
-    res.send('Hello from Yura!');
+    res.send('Hello from Task1!');
 });
 
 app.listen(PORT, function () {
