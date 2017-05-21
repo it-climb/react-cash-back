@@ -1,4 +1,5 @@
-let express = require('express');
+let express = require('express'),
+    routes = require('./src/routes')
 
 // Create our app
 let app = express();
@@ -15,11 +16,13 @@ app.use(function (req, res, next){
 
 app.use(express.static('public'));
 
+app.get('/tests', function(req, res){
+    res.send('hello world');
+});
+
 app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);
 });
 
-app.get("/tests", function (req, res, next) {
-    console.log("Eeeeee");
-    res.send(200);
-});
+app.use('/api', require( './src/routes'));
+
