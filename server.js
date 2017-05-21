@@ -1,4 +1,5 @@
 var express = require('express');
+let loadRoutesData = require('./src/routes.js');
 
 // Create our app
 var app = express();
@@ -13,6 +14,11 @@ app.use(function (req, res, next){
 });
 
 app.use(express.static('public'));
+
+app.get('/tests', function(req, res){
+    console.log("I'm working");
+    res.send('Response send to client');
+});
 
 app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);
