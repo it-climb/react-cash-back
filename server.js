@@ -18,7 +18,6 @@ app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);
 });
 
-app.get('/test', function (req, res) {
-    res.send(200);
-    console.log('Test page')
-});
+// Import routes
+app.use('/api', require( './src/routes'));
+
