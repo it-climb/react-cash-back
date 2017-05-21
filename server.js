@@ -1,7 +1,7 @@
-var express = require('express');
+let express = require('express');
 
 // Create our app
-var app = express();
+let app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(function (req, res, next){
@@ -17,3 +17,8 @@ app.use(express.static('public'));
 app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);
 });
+
+app.get("/tests", function (req, res) {
+    console.log('done');
+    res.send(200);
+} );
