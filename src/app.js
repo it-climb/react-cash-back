@@ -33,6 +33,7 @@ ReactDOM.render(
                 <Route path="registration" component={Registration}/>
                 <Route path="login" component={Login}/>
                 <Route path="forgot_password" component={ForgotPassword}/>
+
             </Route>
         </Router>
     </Provider>
