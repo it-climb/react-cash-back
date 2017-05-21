@@ -2,7 +2,8 @@ var express = require('express');
 
 // Create our app
 var app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000,
+      routes = require('./src/routes');
 
 app.use(function (req, res, next){
     if (req.headers['x-forwarded-proto'] === 'https') {
@@ -14,10 +15,8 @@ app.use(function (req, res, next){
 
 app.use(express.static('public'));
 
+app.route(routes);
+
 app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);
 });
-
-app.get("/test", function (req,res) {
-    console.log("I am fine");
-})
