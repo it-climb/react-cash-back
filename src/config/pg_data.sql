@@ -5,6 +5,13 @@ VALUES
   (uuid_generate_v4(), 'bank', 'Bank', 'Bank'),
   (uuid_generate_v4(), 'client', 'Client', 'Client');
 
+----
+INSERT INTO tests (id, title)
+VALUES
+  (uuid_generate_v4(), 'test 1'),
+  (uuid_generate_v4(), 'test 2'),
+  (uuid_generate_v4(), 'test 3');
+
 
 ----
 -- INSERT INTO
