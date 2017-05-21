@@ -1,25 +1,26 @@
 'use strict';
 
-// const express = require('express');
-// const router = express.Router();
-//
-// router.get('/test', function(req, res) {
-//     res.send('Test');
-// });
-//
-// module.exports = router;
-
-const path = 'test';
+const TestService = require('./service'),
+    path = 'test';
 
 console.log('test  routes');
 
 module.exports = [
     {
         method: 'GET',
-        path: '/test',
+        path: `/${path}`,
         handler: (req, res) => {
             console.log('test XAXAXA TEST');
-            res.send('TEST routestest');
+            TestService.getAll()
+                .then(testData=>{
+                    console.log(testData);
+                    res.send(testData);
+                })
+                .catch(err=> {
+                    console.log('err');
+                    res(err);
+                });
+
         }
     }
 ];

@@ -2,7 +2,7 @@
   "development": {
     "host": "localhost",
     "driver": "postgres",
-    "database": "cashe",
+    "database": "cashback",
     "username": "postgres",
     "password": "1",
     "port": 5432,

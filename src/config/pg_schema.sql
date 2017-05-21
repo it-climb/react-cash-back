@@ -52,6 +52,12 @@ CREATE TABLE IF NOT EXISTS users (
   updated_at     TIMESTAMPTZ DEFAULT NOW()       NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS test (
+  test_id  uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
+  test_name VARCHAR(30) NOT NULL,
+  last_lastname VARCHAR(30) NOT NULL
+);
+
 --   id             UUID DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
 --   email          citext                          NOT NULL CONSTRAINT users_email_idx UNIQUE,
 --   email_verified BOOLEAN                         NOT NULL DEFAULT FALSE,
