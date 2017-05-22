@@ -1,28 +1,24 @@
 'use strict';
 
 const TestService = require('./service'),
-    path = 'test';
-
-console.log('test  routes');
+  path = 'test';
 
 module.exports = [
-    {
-        method: 'GET',
-        path: `/${path}`,
-        handler: (req, res) => {
-            console.log('test XAXAXA TEST');
-            TestService.getAll()
-                .then(testData=>{
-                    console.log(testData);
-                    res.send(testData);
-                })
-                .catch(err=> {
-                    console.log('err');
-                    res(err);
-                });
+  {
+    method: 'GET',
+    path: `/${path}`,
+    handler: (req, res) => {
+      TestService.getAll()
+        .then(testData=>{
+          res.send(testData);
+        })
+        .catch(err=> {
+          console.error('err');
+          res(err);
+        });
 
-        }
     }
+  }
 ];
 
 // const

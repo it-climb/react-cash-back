@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes)=> {
             defaultValue: ''
         },
         test_lastname: {
-            field: 'last_lastname',
+            field: 'test_lastname',
             type: DataTypes.STRING(30),
             allowNull: false,
             defaultValue: ''

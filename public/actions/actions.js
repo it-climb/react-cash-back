@@ -1,5 +1,5 @@
-import * as ACTIONS from '../actions/actionHelper';
-import firebase, {googleAuthProvider, githubAuthProvider, firebaseRef} from '../firebase/firebase';
+import * as ACTIONS from './actionHelper';
+import firebase, {googleAuthProvider, githubAuthProvider, firebaseRef} from '../../src/firebase/firebase';
 import {hashHistory}   from 'react-router';
 
 
