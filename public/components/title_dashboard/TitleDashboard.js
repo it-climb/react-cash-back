@@ -8,7 +8,7 @@ var TitleDashboard = React.createClass({
 
     render: function () {
         return (
-            <div>
+            <div className = "dashboard">
                 <TitleTop/>
                 <TitleMiddle/>
                 <TitleBottom/>

@@ -10,6 +10,9 @@
 //@import "components/title_bottom.scss";
 //@import "components/title_bottom_nav.scss";
 
+body {
+    min-width: 550px;
+}
 .img_title_middle {
     display: block;
     margin: 0 auto;

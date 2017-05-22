@@ -9,10 +9,10 @@ module.exports = [
     path: `/${path}`,
     handler: (req, res) => {
       TestService.getAll()
-        .then(testData=>{
+      .then(testData=>{
           res.send(testData);
         })
-        .catch(err=> {
+      .catch(err=> {
           console.error('err');
           res(err);
         });

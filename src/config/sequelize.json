@@ -33,7 +33,7 @@
   "test": {
     "host": "localhost",
     "driver": "postgres",
-    "database": "dbname",
+    "database": "cashback",
     "username": "postgres",
     "password": "1",
     "port": 5432,
@@ -64,7 +64,7 @@
   "production": {
     "host": "localhost",
     "driver": "postgres",
-    "database": "dbname",
+    "database": "cashback",
     "username": "postgres",
     "password": "1",
     "port": 5432,

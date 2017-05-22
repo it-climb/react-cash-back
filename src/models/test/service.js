@@ -1,6 +1,6 @@
 'use strict';
-const models = require('./../../models'),
-    model = models['Test'];;
+const models = require('./../../models');
+const model = models['Test'];
 
 const TestService = {
 
