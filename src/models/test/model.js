@@ -26,29 +26,5 @@ module.exports = (sequelize, DataTypes)=> {
     }, {
         underscored: true,
         tableName: 'test',
-        // classMethods: {
-        //     associate: function (models) {
-        //         this.belongsTo(models['Test'].scope('plain'), {as: 'User', foreignKey: 'userId'});
-        //     }
-        // },
-        // defaultScope: [
-        //     {attributes: {exclude: ['billingData']}}
-        // ],
-        // scopes: {
-        //     general : {
-        //         attributes: {
-        //             exclude: ['billingData']
-        //         }
-        //     }
-        // },
-        // scopedIncludes: {
-        //     general: [
-        //         {model: 'Image', as: 'Logo', required: false},
-        //     ],
-        //     withUser: [
-        //         {model: 'Image', as: 'Logo', required: false},
-        //         {model: 'User', as: 'User', required: true},
-        //     ]
-        // }
     })
 };
