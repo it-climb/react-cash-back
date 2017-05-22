@@ -6,7 +6,6 @@ var TitleTop = React.createClass({
 
         return (
             <div className = "title-top">
-                TitleTop
             </div>
         );
     }

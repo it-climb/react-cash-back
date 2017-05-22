@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        app: './src/app.js'
+        app: './public/app.js'
     },
     externals: {
         jquery: 'jQuery'
@@ -16,7 +16,7 @@ module.exports = {
     ],
     output: {
         path: __dirname,
-        filename: './public/bundle.js'
+        filename: './dist/bundle.js'
     },
     resolve: {
         alias: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import TitleTopNav      from './../title_top_nav/TitleTopNav';
+import TitleTopNav      from '../title_top_nav/TitleTopNav';
 
 
 var Main = React.createClass({

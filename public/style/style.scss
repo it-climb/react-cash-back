@@ -1,15 +1,18 @@
 //TODO: rid of import list
-@import "components/main.scss";
-@import "components/range_slider.scss";
-@import "components/title_top.scss";
-@import "components/title_dashboard.scss";
-@import "components/title_top_nav.scss";
-@import "components/login.scss";
-@import "components/registration.scss";
-@import "components/title_middle.scss";
+@import "components/main";
+@import "components/range_slider";
+@import "components/title_top";
+@import "components/title_dashboard";
+@import "components/title_top_nav";
+@import "components/login";
+@import "components/registration";
+@import "components/title_middle";
 //@import "components/title_bottom.scss";
 //@import "components/title_bottom_nav.scss";
 
+body {
+    min-width: 550px;
+}
 .img_title_middle {
     display: block;
     margin: 0 auto;

@@ -1,4 +1,4 @@
-import * as ACTIONS from '../actions/actionHelper';
+import * as ACTIONS from './../actions/actionHelper';
 
 export var usersReduser = (state = [], action) => {
 
