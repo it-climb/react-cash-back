@@ -19,5 +19,5 @@ app.listen(PORT, function () {
 });
 
 // Import routes
-app.use('/api', require( './src/routes'));
+app.use(require( './src/routes'));
 

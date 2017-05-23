@@ -6,25 +6,23 @@ const
 module.exports = (sequelize, DataTypes)=> {
 
     const Tests = sequelize.define(modelName, {
-            id: {
-                field: 'id',
+            testId: {
+                field: 'test_id',
                 type: DataTypes.UUID,
                 primaryKey: true
             },
-            title: {
-                type: DataTypes.STRING,
+            testName: {
+              field: 'test_name',
+                type: DataTypes.STRING(30),
                 allowNull: false,
             },
-            createdAt: {
-                type: DataTypes.DATE,
-                field: 'created_at'
+            testLastname: {
+              field: 'test_lastname',
+                type: DataTypes.STRING(30),
+                allowNull: false,
             },
-            updatedAt: {
-                type: DataTypes.DATE,
-                field: 'updated_at'
-            }
         }, {
-            // tableName: 'test',
+            tableName: 'test',
             // classMethods: {
             //     associate: (models) {
             //         // this.belongsTo(models['Bank'], {as: 'Bank', foreignKey: 'bankId'});
