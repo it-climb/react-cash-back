@@ -14,7 +14,7 @@ app.use(function (req, res, next){
 
 app.use(express.static('dist'));
 
-app.use('/', routes);
+app.use(routes);
 
 app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);

@@ -33,6 +33,12 @@ module.exports = (sequelize, DataTypes)=> {
       allowNull: false,
       defaultValue: ''
     },
+    emailVerified: {
+      type: DataTypes.BOOLEAN,
+      field: 'email_verified',
+      allowNull: false,
+      defaultValue: false
+    },
     login: {
       type: DataTypes.STRING(50),
       allowNull: false,
@@ -47,12 +53,6 @@ module.exports = (sequelize, DataTypes)=> {
       field: 'role_id',
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-    },
-    emailVerified: {
-      type: DataTypes.BOOLEAN,
-      field: 'email_verified',
-      allowNull: false,
-      defaultValue: false
     },
     createdAt: {
       type: DataTypes.DATE,

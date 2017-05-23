@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS users (
 -- 7
 CREATE TYPE CARD_TYPE AS ENUM (
   'Дебетная',
-  'Кредитная');
-
+  'Кредитная'
+);
 CREATE TABLE IF NOT EXISTS cash_back  (
   cash_back_id         UUID          NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
   bank_product_id   UUID NOT NULL REFERENCES bank_products(bank_product_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
