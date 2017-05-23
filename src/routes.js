@@ -5,8 +5,8 @@ const express = require( 'express' ),
 fs.readdirSync( __dirname + '/models/' ).forEach( function( route ) {
 
     // File path
-    const routeFile = route + '/route.js';
-    console.log( 'Loading route ' + route + '...' ) ;
+    const routeFile = route + "/route.js";
+    console.log( 'Loading routeFile:' + routeFile +' route: ' + route + '...' ) ;
     // Mount router
     router.use(require( './models/' + routeFile ) ) ;
 
