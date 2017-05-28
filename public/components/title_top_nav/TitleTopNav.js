@@ -6,7 +6,7 @@ import _ from 'lodash';
 import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar, Table} from "react-bootstrap";
 
 
-var TitleTopNav = React.createClass({
+class TitleTopNav = React.createClass({
   _handleGoTo(goToPage) {
     return browserHistory.push.bind(browserHistory, goToPage);
   },
