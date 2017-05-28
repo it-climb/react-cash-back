@@ -1,7 +1,9 @@
-var express = require('express');
+const express = require('express'),
+      routes = require('./src/routes'),
+      bodyParser = require('body-parser');
 
 // Create our app
-var app = express();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(function (req, res, next){
@@ -12,7 +14,15 @@ app.use(function (req, res, next){
     }
 });
 
-app.use(express.static('public'));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+app.use(express.static('dist'));
+
+app.use(routes);
 
 app.listen(PORT, function () {
     console.log('Express server is up on port ' + PORT);
