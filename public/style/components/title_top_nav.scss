@@ -1,0 +1,37 @@
+$top-nav-height: 80px;
+.title-top-nav{
+  position: relative;
+  background-color: #b2dba1;
+  min-width: 550px;
+  height: $top-nav-height + 4px;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.title-top-nav-left{
+  display: inline-block;
+  text-align: center;
+}
+
+.title-top-nav-right{
+  display: inline-block;
+  float: right;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.title-top-nav-button{
+  display: inline-block;
+  height: $top-nav-height;
+  padding: 0px 10px;
+  line-height: $top-nav-height;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover{
+    color: white;
+    background-color: #95db8a;
+    transition: background-color 0.4s;
+  }
+}
