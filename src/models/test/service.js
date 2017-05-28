@@ -7,6 +7,10 @@ const TestService = {
     getAll: () => {
         return model.findAll({});
     },
+
+    sendMail: () => {
+
+    }
 }
 
 module.exports = TestService;
