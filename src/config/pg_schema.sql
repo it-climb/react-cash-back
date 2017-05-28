@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS users (
   user_id  uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
-  professiaon_id UUID NOT NULL REFERENCES professions(profession_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
+  profession_id UUID NOT NULL REFERENCES professions(profession_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
   email VARCHAR(100) NOT NULL,
   email_verified BOOLEAN NOT NULL DEFAULT FALSE,
   login VARCHAR(50) NOT NULL,

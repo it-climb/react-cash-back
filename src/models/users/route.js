@@ -8,13 +8,13 @@ module.exports = [
     method: 'GET',
     path: `/${path}`,
     handler: (req, res) => {
-      TestService.getAll()
+      UsersService.getAll()
       .then(testData=>{
           res.send(testData);
         })
       .catch(err=> {
           console.error('err');
-          res(err);
+          res.send(err);
         });
 
     }
