@@ -4,6 +4,9 @@ import Footer from '../footer';
 
 let Main = React.createClass({
     render: function () {
+
+class Main extends React.Component {
+    render () {
         return (
         <div>
             <TitleTopNav/>
