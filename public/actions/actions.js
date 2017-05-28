@@ -1,59 +1,59 @@
 import * as ACTIONS from './actionHelper';
-import firebase, {googleAuthProvider, githubAuthProvider, firebaseRef} from '../../src/firebase/firebase';
-import {hashHistory}   from 'react-router';
+// import firebase, {googleAuthProvider, githubAuthProvider, firebaseRef} from '../../src/firebase/firebase';
+// import {hashHistory}   from 'react-router';
 
 
 //
 // User's actions
 //
-export var addUserAction = (userObj) => {
+export const addUserAction = (userObj) => {
     return {
-        type: ACTIONS.ADD_USER,
+        type: ACTIONS.CREATE_USER,
         ...userObj
     };
 };
 
-export var updateUserAction = (userObj) => {
-    return {
-        type: ACTIONS.UPDATE_USER,
-        ...userObj
-    };
-};
+// export const updateUserAction = (userObj) => {
+//     return {
+//         type: ACTIONS.UPDATE_USER,
+//         ...userObj
+//     };
+// };
 
-export var removeUserAction = (id) => {
-    return {
-        type: ACTIONS.REMOVE_USER,
-        id
-    };
-};
+// export const removeUserAction = (id) => {
+//     return {
+//         type: ACTIONS.REMOVE_USER,
+//         id
+//     };
+// };
 
-export var addSetOfUsersAction = (users) => {
-    return {
-        type: ACTIONS.ADD_SET_OF_USER,
-        users
-    };
-};
+// export var addSetOfUsersAction = (users) => {
+//     return {
+//         type: ACTIONS.ADD_SET_OF_USER,
+//         users
+//     };
+// };
 
-export var startUpdateUserAction = (userObj) =>{
-    return (dispatch, getState)=>{
-        var uid = getState().auth.uid;
-        var update = {
-            name: userObj.name,
-            age: userObj.age
-        };
+// export const startUpdateUserAction = (userObj) =>{
+//     return (dispatch, getState)=>{
+//         const uid = getState().auth.uid;
+//         const update = {
+//             name: userObj.name,
+//             age: userObj.age
+//         };
+//
+//         const usersRef = firebaseRef.child(`users/${uid}/users/${userObj.id}`);
+//         return usersRef.update(update).then(()=>{
+//             dispatch(updateUserAction(userObj));
+//         });
+//     };
+// };
 
-        var usersRef = firebaseRef.child(`users/${uid}/users/${userObj.id}`);
-        return usersRef.update(update).then(()=>{
-            dispatch(updateUserAction(userObj));
-        });
-    };
-};
-
-export var startAddUserAction = (userObj) => {
+export const startAddUserAction = (userObj) => {
     return (dispatch, getState) => {
 
-        var uid = getState().auth.uid;
-        var userRef = firebaseRef.child(`users/${uid}/users`).push(userObj);
+        // const uid = getState().auth.uid;
+        // const userRef = firebaseRef.child(`users/${uid}/users`).push(userObj);
 
         return userRef.then(() => {
             dispatch(addUserAction({
