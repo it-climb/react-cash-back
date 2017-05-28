@@ -1,12 +1,12 @@
 'use strict';
 const models = require('./../../models');
-const model = models['Test'];
+const model = models['Roles'];
 
-const TestService = {
+const RolesService = {
 
     getAll: () => {
         return model.findAll({});
     },
 }
 
-module.exports = TestService;
+module.exports = RolesService;

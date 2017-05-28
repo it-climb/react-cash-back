@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS users (
   last_name VARCHAR(30) NOT NULL,
   profession_id UUID NOT NULL REFERENCES professions(profession_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
   email VARCHAR(100) NOT NULL,
+  email_verified BOOLEAN NOT NULL DEFAULT FALSE,
   login VARCHAR(50) NOT NULL,
   password VARCHAR(100) NOT NULL,
   role_id UUID NOT NULL REFERENCES roles(role_id) ON UPDATE RESTRICT ON DELETE RESTRICT,
@@ -63,8 +64,8 @@ CREATE TABLE IF NOT EXISTS users (
 -- 7
 CREATE TYPE CARD_TYPE AS ENUM (
   'Дебетная',
-  'Кредитная');
-
+  'Кредитная'
+);
 CREATE TABLE IF NOT EXISTS cash_back  (
   cash_back_id         UUID          NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
   bank_product_id   UUID NOT NULL REFERENCES bank_products(bank_product_id) ON UPDATE RESTRICT ON DELETE RESTRICT,

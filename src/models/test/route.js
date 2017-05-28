@@ -14,7 +14,7 @@ module.exports = [
         })
       .catch(err=> {
           console.error('err');
-          res(err);
+          res.send(err);
         });
 
     }
