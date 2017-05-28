@@ -7,6 +7,11 @@ module.exports = {
     domainName: process.env.TEST_DOMAIN_NAME,
     publicServerName: process.env.TEST_PUBLIC_SERVER_NAME || 'www',
     apiServerName: process.env.TEST_API_SERVER_NAME || 'api',
+
+    mail: {
+        user: 'spalahadvanced@gmail.com',
+        password: 'spalahadvanced1'
+    }
     // amazonS3Credentials: {
     //     provider: 'amazon',
     //     accessKeyId: process.env.AMAZON_S3_KEY_ID,
