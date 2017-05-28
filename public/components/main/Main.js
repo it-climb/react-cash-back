@@ -2,8 +2,8 @@ import React from 'react';
 import TitleTopNav      from '../title_top_nav/TitleTopNav';
 
 
-var Main = React.createClass({
-    render: function () {
+class Main extends React.Component {
+    render () {
         return (
         <div>
             <TitleTopNav/>
@@ -18,7 +18,7 @@ var Main = React.createClass({
         </div>
         )
     }
-});
+}
 
 export default Main;
 

@@ -1,14 +1,14 @@
 'use strict';
 
-const TestService = require('./service'),
-  path = 'test';
+const RolesService = require('./service'),
+  path = 'roles';
 
 module.exports = [
   {
     method: 'GET',
     path: `/${path}`,
     handler: (req, res) => {
-      TestService.getAll()
+      RolesService.getAll()
       .then(testData=>{
           res.send(testData);
         })

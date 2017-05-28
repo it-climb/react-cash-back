@@ -5,13 +5,12 @@ import {startLogoutAction} from './../../actions/actions';
 import _ from 'lodash';
 import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar, Table} from "react-bootstrap";
 
-
-var TitleTopNav = React.createClass({
+class TitleTopNav extends React.Component {
   _handleGoTo(goToPage) {
     return browserHistory.push.bind(browserHistory, goToPage);
-  },
+  }
 
-  render: function () {
+  render () {
     return (
       <div className = "title-top-nav">
           <Row>
@@ -42,7 +41,7 @@ var TitleTopNav = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default TitleTopNav;
 // export default connect((state) => {return state;})(TitleTopNav);
