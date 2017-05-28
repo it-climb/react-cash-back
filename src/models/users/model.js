@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes)=> {
     professionId: {
       field: 'profession_id',
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      // defaultValue: DataTypes.UUIDV4,
     },
     email: {
       type: DataTypes.STRING(100),
@@ -52,7 +52,6 @@ module.exports = (sequelize, DataTypes)=> {
     roleId: {
       field: 'role_id',
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
     },
     createdAt: {
       type: DataTypes.DATE,
