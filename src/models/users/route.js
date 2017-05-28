@@ -1,7 +1,7 @@
 'use strict';
 
-const TestService = require('./service'),
-  path = 'test';
+const UsersService = require('./service'),
+  path = 'users';
 
 module.exports = [
   {

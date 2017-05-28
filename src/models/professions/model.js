@@ -1,58 +1,20 @@
 'use strict';
 
-const modelName = 'User';
+const modelName = 'Professions';
 
 module.exports = (sequelize, DataTypes)=> {
 
   return sequelize.define(modelName, {
-    userId: {
-      field: 'user_id',
+    professioId: {
+      field: 'profession_id',
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    firstName: {
-      field: 'first_name',
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      defaultValue: ''
-    },
-    lastName: {
-      field: 'last_name',
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      defaultValue: ''
-    },
-    professionId: {
-      field: 'profession_id',
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-    },
-    email: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-      defaultValue: ''
-    },
-    emailVerified: {
-      type: DataTypes.BOOLEAN,
-      field: 'email_verified',
-      allowNull: false,
-      defaultValue: false
-    },
-    login: {
+    name: {
       type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: ''
-    },
-    password: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-      defaultValue: ''
-    },
-    roleId: {
-      field: 'role_id',
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -64,7 +26,7 @@ module.exports = (sequelize, DataTypes)=> {
     }
   }, {
     underscored: true,
-    tableName: 'users',
+    tableName: 'professions',
     // classMethods: {
     //     associate: function (models) {
     //         this.belongsTo(models['Test'].scope('plain'), {as: 'User', foreignKey: 'userId'});
