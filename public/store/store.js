@@ -3,16 +3,16 @@ import thunk from 'redux-thunk';
 
 import {usersReduser, selectedUsersReduser, authReducer, avatarReducer}  from './../reducers/redusers';
 
-var configure = (initialState = {}) => {
+let configure = (initialState = {}) => {
 
-    var reducer = redux.combineReducers({
+    let reducer = redux.combineReducers({
         users: usersReduser,
         selectedUser: selectedUsersReduser,
         auth: authReducer,
         avatar: avatarReducer
     });
 
-    var _store = redux.createStore(reducer, initialState, redux.compose(
+    let _store = redux.createStore(reducer, initialState, redux.compose(
         redux.applyMiddleware(thunk),
         window.devToolsExtension ? window.devToolsExtension() : f => f
     ));
@@ -20,6 +20,6 @@ var configure = (initialState = {}) => {
     return _store;
 };
 
-var store = configure();
+let store = configure();
 
 export default store;

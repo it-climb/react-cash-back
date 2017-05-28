@@ -1,8 +1,8 @@
 import React from 'react';
 import TitleTopNav      from '../title_top_nav/TitleTopNav';
+import Footer from '../footer';
 
-
-var Main = React.createClass({
+let Main = React.createClass({
     render: function () {
         return (
         <div>
@@ -12,7 +12,7 @@ var Main = React.createClass({
                     {this.props.children}
                 </div>
             </div>
-            {/*TitleBottomNav*/}
+            <Footer/>
             {/*<div className="img_title_bottom_nav">*/}
             {/*</div>*/}
         </div>

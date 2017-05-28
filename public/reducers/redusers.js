@@ -1,6 +1,6 @@
 import * as ACTIONS from './../actions/actionHelper';
 
-export var usersReduser = (state = [], action) => {
+export let usersReduser = (state = [], action) => {
 
     switch (action.type){
 
@@ -98,7 +98,7 @@ export var selectedUsersReduser = (state = false, action) => {
     }
 };
 
-export var authReducer = (state = {}, action) => {
+export let authReducer = (state = {}, action) => {
     switch (action.type){
 
         case ACTIONS.LOGIN:
@@ -116,7 +116,7 @@ export var authReducer = (state = {}, action) => {
 };
 
 
-export var avatarReducer = (state = 'https://www.mautic.org/media/images/default_avatar.png', action) => {
+export let avatarReducer = (state = 'https://www.mautic.org/media/images/default_avatar.png', action) => {
     switch (action.type){
 
         case ACTIONS.SET_AVATAR:

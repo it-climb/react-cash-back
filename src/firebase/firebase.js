@@ -10,7 +10,7 @@ try
 //     storageBucket: "reactapp-b838f.appspot.com",
 //     messagingSenderId: "250175130066"
 // };
-    var config = {
+    let config = {
         apiKey: "AIzaSyBoyo6rPXCrFJow0YpD3GLuzGt6CEVLmbo",
         authDomain: "cashback-473c1.firebaseapp.com",
         databaseURL: "https://cashback-473c1.firebaseio.com",
@@ -33,7 +33,7 @@ catch(e){
 //     var user = result.user;
 // });
 
-export var googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-export var githubAuthProvider = new firebase.auth.GithubAuthProvider();
-export var firebaseRef = firebase.database().ref();
+export let googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+export let githubAuthProvider = new firebase.auth.GithubAuthProvider();
+export let firebaseRef = firebase.database().ref();
 export default firebase;

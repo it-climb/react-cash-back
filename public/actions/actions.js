@@ -6,54 +6,54 @@ import {hashHistory}   from 'react-router';
 //
 // User's actions
 //
-export var addUserAction = (userObj) => {
+export let addUserAction = (userObj) => {
     return {
         type: ACTIONS.ADD_USER,
         ...userObj
     };
 };
 
-export var updateUserAction = (userObj) => {
+export let updateUserAction = (userObj) => {
     return {
         type: ACTIONS.UPDATE_USER,
         ...userObj
     };
 };
 
-export var removeUserAction = (id) => {
+export let removeUserAction = (id) => {
     return {
         type: ACTIONS.REMOVE_USER,
         id
     };
 };
 
-export var addSetOfUsersAction = (users) => {
+export let addSetOfUsersAction = (users) => {
     return {
         type: ACTIONS.ADD_SET_OF_USER,
         users
     };
 };
 
-export var startUpdateUserAction = (userObj) =>{
+export let startUpdateUserAction = (userObj) =>{
     return (dispatch, getState)=>{
-        var uid = getState().auth.uid;
-        var update = {
+        let uid = getState().auth.uid;
+        let update = {
             name: userObj.name,
             age: userObj.age
         };
 
-        var usersRef = firebaseRef.child(`users/${uid}/users/${userObj.id}`);
+        let usersRef = firebaseRef.child(`users/${uid}/users/${userObj.id}`);
         return usersRef.update(update).then(()=>{
             dispatch(updateUserAction(userObj));
         });
     };
 };
 
-export var startAddUserAction = (userObj) => {
+export let startAddUserAction = (userObj) => {
     return (dispatch, getState) => {
 
-        var uid = getState().auth.uid;
-        var userRef = firebaseRef.child(`users/${uid}/users`).push(userObj);
+        let uid = getState().auth.uid;
+        let userRef = firebaseRef.child(`users/${uid}/users`).push(userObj);
 
         return userRef.then(() => {
             dispatch(addUserAction({
@@ -97,11 +97,11 @@ export var startAddUserAction = (userObj) => {
 //     };
 // };
 
-export var startRemoveUserAction = (id) => {
+export let startRemoveUserAction = (id) => {
   return (dispatch, getState) => {
-      var uid = getState().auth.uid;
+      let uid = getState().auth.uid;
 
-      var usersRef = firebaseRef.child(`users/${uid}/users/${id}`);
+      let usersRef = firebaseRef.child(`users/${uid}/users/${id}`);
 
       return usersRef.remove().then(()=>{
           dispatch(removeUserAction(id));
@@ -113,14 +113,14 @@ export var startRemoveUserAction = (id) => {
 //
 // User select actions
 //
-export var selectUserAction = (selectedUser) => {
+export let selectUserAction = (selectedUser) => {
     return {
         type: ACTIONS.USER_WAS_SELECTED,
         selectedUser
     };
 };
 
-export var lostFocusUserAction = () => {
+export let lostFocusUserAction = () => {
     return {
         type: ACTIONS.USER_LOST_FOCUS,
         selectedUser: false
@@ -195,7 +195,7 @@ export var lostFocusUserAction = () => {
 //
 // Auth actions
 //
-export var login = (uid, accessToken) => {
+export let login = (uid, accessToken) => {
     return {
         type: ACTIONS.LOGIN,
         uid,
@@ -203,7 +203,7 @@ export var login = (uid, accessToken) => {
     };
 };
 
-export var logout = () => {
+export let logout = () => {
     return {
         type: ACTIONS.LOGOUT
     };
@@ -238,7 +238,7 @@ export var logout = () => {
 //     };
 // }
 
-export var startLoginWithEmailAndPassword = (email, password) =>{
+export let startLoginWithEmailAndPassword = (email, password) =>{
     return (dispatch, getSate)=>{
         return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
             let token = result.refreshToken;
@@ -250,7 +250,7 @@ export var startLoginWithEmailAndPassword = (email, password) =>{
     };
 }
 
-export var startLogoutAction = () =>{
+export let startLogoutAction = () =>{
     return (dispatch, getSate)=>{
         return firebase.auth().signOut().then(function() {
             dispatch(logout());
