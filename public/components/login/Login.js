@@ -2,7 +2,7 @@ import React from 'react';
 import {connect}  from 'react-redux';
 
 
-const Login = React.createClass({
+class Login extends React.Component {
 
     loginEmailAndPassword(){
         let {dispatch} = this.props;
@@ -10,7 +10,7 @@ const Login = React.createClass({
         let passwordRef = this.refs.password;
 
         dispatch(startLoginWithEmailAndPassword(emailRef.value, passwordRef.value));
-    },
+    }
 
     render(){
         return (
@@ -60,6 +60,6 @@ const Login = React.createClass({
             </div>
         );
     }
-});
+}
 
 export default connect()(Login);

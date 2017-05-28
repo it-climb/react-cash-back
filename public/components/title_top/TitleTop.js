@@ -1,14 +1,13 @@
 import React from 'react';
 
-var TitleTop = React.createClass({
+class TitleTop extends React.Component {
 
-    render: function () {
-
+    render () {
         return (
             <div className = "title-top">
             </div>
         );
     }
-});
+}
 
 export default TitleTop;
