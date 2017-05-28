@@ -17,6 +17,7 @@
     "hover.css": "^2.0.2",
     "lodash": "^4.17.4",
     "node-uuid": "^1.4.7",
+    "nodemailer": "^4.0.1",
     "pg": "^6.1.5",
     "pg-hstore": "^2.3.2",
     "react": "^15.4.2",

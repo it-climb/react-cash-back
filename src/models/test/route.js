@@ -18,5 +18,15 @@ module.exports = [
                 });
 
         }
+    },{
+        method: 'POST',
+        path: `/mail`,
+        handler: (req, res) => {
+
+            TestService.sendler(req.query.to,
+                                req.query.subject,
+                                req.query.text);
+
+        }
     }
 ];
