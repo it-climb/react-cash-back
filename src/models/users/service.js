@@ -7,6 +7,11 @@ const UsersService = {
     getAll: () => {
         return model.findAll({});
     },
+
+    create: userObject => {
+        let user = Object.assign({}, userObject, {professionId : 'c47eb311-3866-4b8c-899d-b06855957d68'});
+        return model.create(user);
+    },
 }
 
 module.exports = UsersService;

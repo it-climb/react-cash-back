@@ -18,7 +18,30 @@ module.exports = [
         });
 
     }
-  }
+  },
+    {
+    method: 'POST',
+    path: `/${path}`,
+    handler: (req, res) => {
+
+     // console.log("26");
+     // console.log("req.body", req.body);
+     // console.log("req.payload", req.payload);
+     let {firstName, lastName, login, email, password} = req.body;
+     let userObject = { firstName, lastName, login, email, password };
+      UsersService.create(userObject)
+      .then(testData=>{
+          res.send(testData);
+        })
+      .catch(err=> {
+          console.error('err');
+          res.send(err);
+        });
+
+        res.send(200);
+
+    }
+  },
 ];
 
 // const

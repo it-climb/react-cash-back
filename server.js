@@ -1,4 +1,6 @@
-const express = require('express'), routes = require('./src/routes');
+const express = require('express'),
+      routes = require('./src/routes'),
+      bodyParser = require('body-parser');
 
 // Create our app
 const app = express();
@@ -11,6 +13,12 @@ app.use(function (req, res, next){
         next();
     }
 });
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 app.use(express.static('dist'));
 
