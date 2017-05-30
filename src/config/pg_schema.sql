@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS costs  (
 );
 -- 6
 CREATE TABLE IF NOT EXISTS users (
-  user_id  uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
+  user_id UUID DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   profession_id UUID NOT NULL REFERENCES professions(profession_id) ON UPDATE RESTRICT ON DELETE RESTRICT,

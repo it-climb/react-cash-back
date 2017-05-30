@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes)=> {
     professionId: {
       field: 'profession_id',
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      // defaultValue: DataTypes.UUIDV4,
     },
     email: {
       type: DataTypes.STRING(100),
@@ -52,7 +52,6 @@ module.exports = (sequelize, DataTypes)=> {
     roleId: {
       field: 'role_id',
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -65,29 +64,5 @@ module.exports = (sequelize, DataTypes)=> {
   }, {
     underscored: true,
     tableName: 'users',
-    // classMethods: {
-    //     associate: function (models) {
-    //         this.belongsTo(models['Test'].scope('plain'), {as: 'User', foreignKey: 'userId'});
-    //     }
-    // },
-    // defaultScope: [
-    //     {attributes: {exclude: ['billingData']}}
-    // ],
-    // scopes: {
-    //     general : {
-    //         attributes: {
-    //             exclude: ['billingData']
-    //         }
-    //     }
-    // },
-    // scopedIncludes: {
-    //     general: [
-    //         {model: 'Image', as: 'Logo', required: false},
-    //     ],
-    //     withUser: [
-    //         {model: 'Image', as: 'Logo', required: false},
-    //         {model: 'User', as: 'User', required: true},
-    //     ]
-    // }
   })
 };
