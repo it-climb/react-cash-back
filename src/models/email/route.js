@@ -6,9 +6,16 @@ const EmailService = require('./service'),
 module.exports = [
     {
         method: 'POST',
-        path: `/${path}`,
+        path: `/${path}/send`,
         handler: (req, res) => {
-            EmailService.sendTest(req, res);
+            EmailService.sendEmail(req, res);
+        }
+    },
+    {
+        method: 'POST',
+        path: `/${path}/verify`,
+        handler: (req, res) => {
+            EmailService.verifyEmail(req, res);
         }
     }
 ];
