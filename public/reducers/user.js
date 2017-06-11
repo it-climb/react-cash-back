@@ -1,8 +1,8 @@
 import * as Types from "../constants";
 
 const defaultState = {
-  firstname: "",
-  lastname: "",
+  firstName: "",
+  lastName: "",
   login: "",
   email: "",
   password: "",
@@ -14,9 +14,9 @@ export default (state = defaultState, { type, ...action }) => {
     case Types.INPUT_USER_FIELD:
       console.log('INPUT_USER_FIELD action:', action);
       return Object.assign({}, state, action.field);
-    case Types.CREATE_USER:
-
-      return Object.assign({}, state, action.user);
+    // case Types.CREATE_USER:
+    //
+    //   return Object.assign({}, state, action.user);
     default:
       return state;
   }

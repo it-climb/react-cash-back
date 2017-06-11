@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {connect}  from 'react-redux';
+import PropTypes from "prop-types";
 import {
   createUser,
 } from './../../actions/user';
@@ -17,12 +18,12 @@ class Registration extends Component {
   constructor() {
     super();
     this.state = {
-      firstname: "",
-      lastname: "",
+      firstName: "",
+      lastName: "",
       login: "",
       email: "",
-      firstnameClass: startClass,
-      lastnameClass: startClass,
+      firstNameClass: startClass,
+      lastNameClass: startClass,
       loginClass: startClass,
       emailClass: startClass,
       confirmPasswordClass: startClass,
@@ -44,8 +45,8 @@ class Registration extends Component {
     e.preventDefault();
     console.log("onSubmit");
     let userRef = {
-      firstname: this.refs.firstname.value.trim(),
-      lastname: this.refs.lastname.value.trim(),
+      firstName: this.refs.firstName.value.trim(),
+      lastName: this.refs.lastName.value.trim(),
       login: this.refs.login.value.trim(),
       email: this.refs.email.value.trim(),
       password: this.refs.password.value.trim(),
@@ -62,10 +63,11 @@ class Registration extends Component {
         let fieldClassName = ref+'Class';
         let fieldCl = {[fieldClassName]: errClass}
         this.setState( fieldCl );
+        console.log("66 err", ref);
       }
     }
     if (userRef.password !== userRef.confirmPassword) {
-      console.log('password !== confirmPassword');
+      console.log('69 password !== confirmPassword');
       errFields.push('confirmPassword');
       this.setState({ confirmPasswordClass: errClass });
     }
@@ -102,17 +104,17 @@ class Registration extends Component {
                 onSubmit={this._onSubmitForm.bind(this)}
               >
 
-                <div style={{marginBottom: '25px'}} className={this.state.firstnameClass}>
+                <div style={{marginBottom: '25px'}} className={this.state.firstNameClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
-                  <input id="regist-firstname" type="text" className="form-control" name="firstname"
-                         placeholder="firstname" ref="firstname" value={this.state.firstname}
+                  <input id="regist-firstName" type="text" className="form-control" name="firstName"
+                         placeholder="firstName" ref="firstName" value={this.state.firstName}
                          onChange={this._handleChange.bind(this)} />
                 </div>
 
-                <div style={{marginBottom: '25px'}} className={this.state.lastnameClass}>
+                <div style={{marginBottom: '25px'}} className={this.state.lastNameClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
-                  <input id="regist-lastname" type="text" className="form-control" name="lastname"
-                         placeholder="lastname" ref="lastname" value={this.state.lastname}
+                  <input id="regist-lastName" type="text" className="form-control" name="lastName"
+                         placeholder="lastName" ref="lastName" value={this.state.lastName}
                          onChange={this._handleChange.bind(this)}/>
                 </div>
 
@@ -158,6 +160,11 @@ class Registration extends Component {
       </div>
     );
   }
+}
+
+Registration.propTypes = {
+      user: PropTypes.object.isRequired,
+      createUser: PropTypes.func.isRequired,
 }
 
 export default connect(selector, {

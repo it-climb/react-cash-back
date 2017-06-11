@@ -9,6 +9,7 @@ const UsersService = {
     },
 
     create: userObject => {
+        console.log('users service create userObject:', userObject);
         let userDefault = {
             email_verified: false,
             professionId : 'c47eb311-3866-4b8c-899d-b06855957d68', //Программ

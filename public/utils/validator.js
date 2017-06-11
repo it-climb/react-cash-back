@@ -2,8 +2,8 @@ export function validator(valToCheck = '', valType = 'name')
 {
   switch(valType) {
     case 'name':
-    case 'firstname':
-    case 'lastname':
+    case 'firstName':
+    case 'lastName':
       return /^([a-zA-ZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮёЁіІїЇєЄ`’\-])+$/i.test(valToCheck.trim());
     case 'login':
       return /^([a-zA-Z][a-zA-Z0-9_\-]+)$/i.test(valToCheck.trim());
