@@ -1,0 +1,2 @@
+export const CREATE_USER = "CREATE_USER";
+export const INPUT_USER_FIELD = "INPUT_USER_FIELD";
