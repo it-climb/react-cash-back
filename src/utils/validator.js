@@ -15,7 +15,9 @@ const Utils = {
       case 'password':
       case 'confirmPassword':
         return /^([\w\d\-])+$/i.test(valToCheck.trim());
-        return false;
+      case 'professionId':
+        return /^([\w\d\-])+$/i.test(valToCheck.trim());
+      return false;
     }
   },
 }

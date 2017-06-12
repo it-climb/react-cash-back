@@ -8,20 +8,23 @@ import {validator} from './../../utils/validator';
 
 const selector = state => ({
   user: state.user,
+  professions: state.professions,
 });
 
+const { func, array, object } = PropTypes;
 const startClass = "input-group";
 const okClass = "input-group has-success";
 const errClass = "input-group has-error";
 
 class Registration extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       firstName: "",
       lastName: "",
       login: "",
       email: "",
+      professionId: "",
       firstNameClass: startClass,
       lastNameClass: startClass,
       loginClass: startClass,
@@ -30,15 +33,10 @@ class Registration extends Component {
     };
   }
 
-  // static propTypes = {
-  //   user: PropTypes.object.isRequired,
-  //   createUser: PropTypes.func.isRequired,
-  // };
-
   _handleChange(e) {
     let field = {[e.target.name]: e.target.value};
-    this.setState( field );
-    console.log(' onChange value:', e.target.value, ' name:', e.target.name, ' field:', field);
+    this.setState(field);
+    console.log('39 onChange value:', e.target.value, ' name:', e.target.name, ' field:', field);
   };
 
   _onSubmitForm(e) {
@@ -51,25 +49,26 @@ class Registration extends Component {
       email: this.refs.email.value.trim(),
       password: this.refs.password.value.trim(),
       confirmPassword: this.refs.confirmPassword.value.trim(),
+      professionId: this.refs.professionId.value.trim(),
     }
     let errFields = [];
     for (var ref in userRef) {
       if (validator(userRef[ref], ref)) {
-        let fieldClassName = ref+'Class';
+        let fieldClassName = ref + 'Class';
         let fieldCl = {[fieldClassName]: okClass}
-        this.setState( fieldCl );
+        this.setState(fieldCl);
       } else {
         errFields.push(ref);
-        let fieldClassName = ref+'Class';
+        let fieldClassName = ref + 'Class';
         let fieldCl = {[fieldClassName]: errClass}
-        this.setState( fieldCl );
+        this.setState(fieldCl);
         console.log("66 err", ref);
       }
     }
     if (userRef.password !== userRef.confirmPassword) {
       console.log('69 password !== confirmPassword');
       errFields.push('confirmPassword');
-      this.setState({ confirmPasswordClass: errClass });
+      this.setState({confirmPasswordClass: errClass});
     }
     if (errFields.length > 0) {
       console.log('errors in:', errFields);
@@ -81,9 +80,11 @@ class Registration extends Component {
   };
 
   render() {
-    // const {user} = this.props;
+    const {professions} = this.props;
+    console.log('registration 82 professions', professions);
     let st = this.state;
     console.log('90 state:', st);
+    let i = 0;
     return (
       <div className="container">
         <div id="registbox" style={{marginTop: '50px'}}
@@ -108,7 +109,7 @@ class Registration extends Component {
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
                   <input id="regist-firstName" type="text" className="form-control" name="firstName"
                          placeholder="firstName" ref="firstName" value={this.state.firstName}
-                         onChange={this._handleChange.bind(this)} />
+                         onChange={this._handleChange.bind(this)}/>
                 </div>
 
                 <div style={{marginBottom: '25px'}} className={this.state.lastNameClass}>
@@ -128,6 +129,18 @@ class Registration extends Component {
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
                   <input id="regist-email" type="text" className="form-control" name="email" placeholder="email"
                          ref="email" value={this.state.email} onChange={this._handleChange.bind(this)}/>
+                </div>
+
+                <div style={{marginBottom: '25px'}} className={this.state.emailClass}>
+                  <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
+                  <select id="regist-profession" className="form-control" name="professionId" ref="professionId"
+                           onChange={this._handleChange.bind(this)}>
+                    {
+                      professions.map((profession) =>{
+                        return <option key={"profession"+i++} value={profession.professionId} >{profession.name}</option>
+                      })
+                    }
+                  </select>
                 </div>
 
                 <div style={{marginBottom: '25px'}} className="input-group">
@@ -163,10 +176,11 @@ class Registration extends Component {
 }
 
 Registration.propTypes = {
-      user: PropTypes.object.isRequired,
-      createUser: PropTypes.func.isRequired,
-}
+  user: object.isRequired,
+  createUser: func.isRequired,
+  professions: array.isRequired,
+};
 
 export default connect(selector, {
-  createUser
+  createUser,
 })(Registration);

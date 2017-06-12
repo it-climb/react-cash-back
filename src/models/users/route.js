@@ -72,7 +72,7 @@ module.exports = [
 
         })
         .catch(ValidationError => {
-          console.log("3 email is not unique");
+          console.log("users router75: ", ValidationError);
         })
         .catch(err => {
           console.error('err');

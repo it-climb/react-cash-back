@@ -22,8 +22,7 @@ const UsersService = {
         console.log('users service create userObject:', userObject);
         let userDefault = {
             email_verified: false,
-            professionId : 'c47eb311-3866-4b8c-899d-b06855957d68', //Программ
-            roleId : '49020a96-3872-41d4-84d5-ad1d0a411f33' //client
+            roleId : 'abc414c8-1c61-4308-85de-1c34ce07f731' //client
         };
         let user = Object.assign({}, userObject, userDefault);
         return model.create(user);

@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        app: './public/app.js'
+        app: './public/index.js'
     },
     externals: {
         jquery: 'jQuery'

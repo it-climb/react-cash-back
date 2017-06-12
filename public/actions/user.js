@@ -2,7 +2,7 @@ import * as Types from "../constants";
 import {ValidationError} from "./../utils/errors";
 
 export const createUser = user => {
-  console.log('action2 createUser user:', user);
+  // console.log('action2 createUser user:', user);
   let data = {
     method: 'POST',
     credentials: 'same-origin',
@@ -11,7 +11,6 @@ export const createUser = user => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      // 'X-CSRFToken':  cookie.load('csrftoken')
     }
   }
   let emailData = user.email;
@@ -37,14 +36,4 @@ export const createUser = user => {
     })
 };
 
-export const inputUserField = field => ({
-  type: Types.INPUT_USER_FIELD,
-  field
-});
-
-//
-// export const createUser = user => ({
-//   type: Types.CREATE_USER,
-//   user
-// });
 

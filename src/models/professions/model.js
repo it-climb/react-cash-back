@@ -5,7 +5,7 @@ const modelName = 'Professions';
 module.exports = (sequelize, DataTypes)=> {
 
   return sequelize.define(modelName, {
-    professioId: {
+    professionId: {
       field: 'profession_id',
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
