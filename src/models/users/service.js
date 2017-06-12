@@ -1,11 +1,21 @@
 'use strict';
 const models = require('./../../models');
 const model = models['Users'];
+const EmailService = require('./../email/service');
+// const crypto = require('crypto');
+const Crypto = require( './../../utils/crypto');
+// const Cryptr = require('cryptr'),
+//   cryptr = new Cryptr('itclimbe');
 
 const UsersService = {
 
     getAll: () => {
         return model.findAll({});
+    },
+
+    findEmail: email => {
+        console.log('users service findEmail:', email);
+        return model.count({where:{email: email}});
     },
 
     create: userObject => {
@@ -18,6 +28,15 @@ const UsersService = {
         let user = Object.assign({}, userObject, userDefault);
         return model.create(user);
     },
+
 }
+
+model.afterCreate((userObject, options, next)=>{
+  const email = userObject.email;
+  const secretKey = Crypto.encrypt(email);
+  EmailService.sendServerEmail(email, secretKey);
+  next();
+
+});
 
 module.exports = UsersService;
