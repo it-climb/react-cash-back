@@ -15,18 +15,7 @@ const createData = user => {
 }
 
 export const createUser = user => {
-  // let data = {
-  //   method: 'POST',
-  //   credentials: 'same-origin',
-  //   mode: 'same-origin',
-  //   body: JSON.stringify(user),
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type': 'application/json',
-  //   }
-  // }
   const data = createData(user);
-  console.log('actions user createData', data,' user', user);
   const emailData = user.email;
   return fetch(`/users/findEmail?email=${emailData}`)
     .then(res => {
