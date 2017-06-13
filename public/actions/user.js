@@ -1,9 +1,8 @@
 import * as Types from "../constants";
 import {ValidationError} from "./../utils/errors";
 
-export const createUser = user => {
-  console.log('action2 createUser user:', user);
-  let data = {
+const createData = user => {
+  return {
     method: 'POST',
     credentials: 'same-origin',
     mode: 'same-origin',
@@ -11,10 +10,13 @@ export const createUser = user => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      // 'X-CSRFToken':  cookie.load('csrftoken')
     }
   }
-  let emailData = user.email;
+}
+
+export const createUser = user => {
+  const data = createData(user);
+  const emailData = user.email;
   return fetch(`/users/findEmail?email=${emailData}`)
     .then(res => {
       if (Math.floor(res.status / 100) === 2) {
@@ -35,16 +37,11 @@ export const createUser = user => {
     .catch(err => {
       console.log('err:', err);
     })
-};
+}
 
-export const inputUserField = field => ({
-  type: Types.INPUT_USER_FIELD,
-  field
-});
+export const loginUser = user => {
+  console.log('login user:', user);
 
-//
-// export const createUser = user => ({
-//   type: Types.CREATE_USER,
-//   user
-// });
+}
+
 

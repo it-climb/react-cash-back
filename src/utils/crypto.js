@@ -3,8 +3,7 @@
 const Cryptr = require('cryptr'),
   cryptr = new Cryptr('itclimbe');
 
-
-export const Crypto = {
+const Crypto = {
   encrypt: text => {
     return cryptr.encrypt(text);
   },

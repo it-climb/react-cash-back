@@ -14,6 +14,8 @@ export function validator(valToCheck = '', valType = 'name')
     case 'password':
     case 'confirmPassword':
       return /^([\w\d\-])+$/i.test(valToCheck.trim());
+    case 'professionId':
+      return /^([\w\d\-])+$/i.test(valToCheck.trim());
     return false;
   }
 }

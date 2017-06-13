@@ -7,6 +7,7 @@ const defaultState = {
   email: "",
   password: "",
   confirmPassword: "",
+  professionId: "",
 };
 
 export default (state = defaultState, { type, ...action }) => {
