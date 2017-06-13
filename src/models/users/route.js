@@ -51,8 +51,8 @@ module.exports = [
     method: 'POST',
     path: `/${path}`,
     handler: (req, res) => {
-      let {firstName, lastName, login, email, password} = req.body;
-      let userObject = {firstName, lastName, login, email, password};
+      let {firstName, lastName, login, email, professionId, password} = req.body;
+      let userObject = {firstName, lastName, login, email, professionId, password};
       for (var val in userObject) {
         if (!Utils.validator(userObject[val], val)) {
           res.sendStatus(400);

@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import {connect}  from 'react-redux';
 import PropTypes from "prop-types";
-import {
-  createUser,
-} from './../../actions/user';
 import {validator} from './../../utils/validator';
+import {createUser} from './../../actions/user';
 
 const selector = state => ({
   user: state.user,
   professions: state.professions,
 });
 
-const { func, array, object } = PropTypes;
+const {func, array, object} = PropTypes;
 const startClass = "input-group";
 const okClass = "input-group has-success";
 const errClass = "input-group has-error";
@@ -36,12 +34,11 @@ class Registration extends Component {
   _handleChange(e) {
     let field = {[e.target.name]: e.target.value};
     this.setState(field);
-    console.log('39 onChange value:', e.target.value, ' name:', e.target.name, ' field:', field);
-  };
+    // console.log('39 onChange value:', e.target.value, ' name:', e.target.name, ' field:', field);
+  }
 
   _onSubmitForm(e) {
     e.preventDefault();
-    console.log("onSubmit");
     let userRef = {
       firstName: this.refs.firstName.value.trim(),
       lastName: this.refs.lastName.value.trim(),
@@ -62,28 +59,24 @@ class Registration extends Component {
         let fieldClassName = ref + 'Class';
         let fieldCl = {[fieldClassName]: errClass}
         this.setState(fieldCl);
-        console.log("66 err", ref);
+        console.log("registration 64 errror:", ref);
       }
     }
     if (userRef.password !== userRef.confirmPassword) {
-      console.log('69 password !== confirmPassword');
+      console.log('registration 68: password !== confirmPassword');
       errFields.push('confirmPassword');
       this.setState({confirmPasswordClass: errClass});
     }
     if (errFields.length > 0) {
-      console.log('errors in:', errFields);
+      console.log('registration errors in:', errFields);
       return;
     }
-    console.log("All OK");
+    console.log("Registration OK");
     this.props.createUser(userRef);
-
-  };
+  }
 
   render() {
     const {professions} = this.props;
-    console.log('registration 82 professions', professions);
-    let st = this.state;
-    console.log('90 state:', st);
     let i = 0;
     return (
       <div className="container">
@@ -134,10 +127,11 @@ class Registration extends Component {
                 <div style={{marginBottom: '25px'}} className={this.state.emailClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
                   <select id="regist-profession" className="form-control" name="professionId" ref="professionId"
-                           onChange={this._handleChange.bind(this)}>
+                          onChange={this._handleChange.bind(this)}>
                     {
-                      professions.map((profession) =>{
-                        return <option key={"profession"+i++} value={profession.professionId} >{profession.name}</option>
+                      professions.map((profession) => {
+                        return <option key={"profession" + i++}
+                                       value={profession.professionId}>{profession.name}</option>
                       })
                     }
                   </select>
@@ -157,7 +151,6 @@ class Registration extends Component {
 
                 <div style={{marginTop: '10px'}} className="form-group">
                   <div className="col-sm-12 controls">
-                    {/*<a id="btn-regist" className="btn btn-success" onClick={this.registrateUser}>Registrate</a>*/}
                     <input
                       type="submit"
                       value="Registrate"

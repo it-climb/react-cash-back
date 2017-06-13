@@ -2,10 +2,7 @@
 const models = require('./../../models');
 const model = models['Users'];
 const EmailService = require('./../email/service');
-// const crypto = require('crypto');
 const Crypto = require( './../../utils/crypto');
-// const Cryptr = require('cryptr'),
-//   cryptr = new Cryptr('itclimbe');
 
 const UsersService = {
 
@@ -27,7 +24,6 @@ const UsersService = {
         let user = Object.assign({}, userObject, userDefault);
         return model.create(user);
     },
-
 }
 
 model.afterCreate((userObject, options, next)=>{

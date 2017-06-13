@@ -1,14 +1,60 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect}  from 'react-redux';
+import PropTypes from "prop-types";
+import {validator} from './../../utils/validator';
+import {loginUser} from './../../actions/user';
 
-class Login extends React.Component {
+const selector = state => ({
+  user: state.user,
+});
 
-  loginEmailAndPassword() {
-    let {dispatch} = this.props;
-    let emailRef = this.refs.email;
-    let passwordRef = this.refs.password;
+const {func, object} = PropTypes;
+const startClass = "input-group";
+const okClass = "input-group has-success";
+const errClass = "input-group has-error";
 
-    dispatch(startLoginWithEmailAndPassword(emailRef.value, passwordRef.value));
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      emailClass: startClass,
+      passwordClass: startClass,
+    };
+  }
+
+  _handleChange(e) {
+    let field = {[e.target.name]: e.target.value};
+    this.setState(field);
+  }
+
+  _onSubmitForm(e) {
+    e.preventDefault();
+    let userRef = {
+      email: this.refs.email.value.trim(),
+      password: this.refs.password.value.trim(),
+    }
+    let errFields = [];
+    for (var ref in userRef) {
+      if (validator(userRef[ref], ref)) {
+        let fieldClassName = ref + 'Class';
+        let fieldCl = {[fieldClassName]: okClass}
+        this.setState(fieldCl);
+      } else {
+        errFields.push(ref);
+        let fieldClassName = ref + 'Class';
+        let fieldCl = {[fieldClassName]: errClass}
+        this.setState(fieldCl);
+        console.log("login 44 error: ", ref);
+      }
+    }
+    if (errFields.length > 0) {
+      console.log('login errors in:', errFields);
+      return;
+    }
+    console.log("Login OK");
+    this.props.loginUser(userRef);
   }
 
   render() {
@@ -27,25 +73,35 @@ class Login extends React.Component {
 
               <div style={{display: 'none'}} id="login-alert" className="alert alert-danger col-sm-12"></div>
 
-              <form id="loginform" className="form-horizontal" role="form">
+              <form
+                id="loginform"
+                className="form-horizontal"
+                role="form"
+                onSubmit={this._onSubmitForm.bind(this)}
+              >
 
-                <div style={{marginBottom: '25px'}} className="input-group">
+                <div style={{marginBottom: '25px'}} className={this.state.emailClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
-                  <input id="login-username" type="text" className="form-control" name="email" placeholder="email"
-                         ref="email"/>
+                  <input id="login-email" type="text" className="form-control" name="email" placeholder="email"
+                         ref="email" value={this.state.email} onChange={this._handleChange.bind(this)}/>
                 </div>
 
-                <div style={{marginBottom: '25px'}} className="input-group">
+                <div style={{marginBottom: '25px'}} className={this.state.passwordClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-lock"></i></span>
                   <input id="login-password" type="password" className="form-control" name="password"
-                         placeholder="password" ref="password"/>
+                         placeholder="password" ref="password" onChange={this._handleChange.bind(this)}/>
                 </div>
 
                 <div style={{marginTop: '10px'}} className="form-group">
-
                   <div className="col-sm-12 controls">
-                    <a id="btn-login" className="btn btn-success" onClick={this.loginEmailAndPassword}>Login</a>
-
+                    <div className="col-sm-12 controls">
+                      <input
+                        type="submit"
+                        value="Registrate"
+                        id="btn-regist"
+                        className="btn btn-success"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -65,4 +121,11 @@ class Login extends React.Component {
   }
 }
 
-export default connect()(Login);
+Login.propTypes = {
+  user: object.isRequired,
+  loginUser: func.isRequired,
+};
+
+export default connect(selector, {
+  loginUser,
+})(Login);
