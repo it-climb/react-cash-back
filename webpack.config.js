@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        app: './src/app.js'
+        app: './public/index.js'
     },
     externals: {
         jquery: 'jQuery'
@@ -16,27 +16,23 @@ module.exports = {
     ],
     output: {
         path: __dirname,
-        filename: './public/bundle.js'
+        filename: './dist/bundle.js'
     },
     resolve: {
-        modules: [
-            path.join(__dirname, "src"),
-            "node_modules"
-        ],
+        alias: {
+            TitleTop: './../title_top/TitleTop.js'
+        },
         extensions: ['.js', '.jsx']
     },
     module: {
-        rules: [
+        loaders: [
             {
                 test: /\.css$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    },
-                    {
-                        loader: "css-loader"
-                    }
-                ]
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style-loader!css-loader!sass-loader'
             },
             {
                 test: /\.png$/,
@@ -77,35 +73,31 @@ module.exports = {
                     mimetype: "mimetype=image/svg+xml"
                 }
             },
-            // {
-            //     test: /\.jsx$/,
-            //     exclude: /(node_modules|bower_components)/,
-            //     loader: "babel-loader",
-            //     query: {
-            //         options: {
-            //             presets: [
-            //                 'react',
-            //                 ['es2015', {modules: false}],
-            //                 'stage-0',
-            //                 "env"
-            //             ],
-            //         }
-            //     }
-            // }
+            {
+                test: /\.jsx$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: "babel-loader",
+                query: {
+                    presets: [
+                        'react',
+                        'es2015',
+                        'stage-0',
+                        "env"
+                    ]
+                }
+            },
             {
                 test: /\.js$/,
+                loader: 'babel-loader',
                 exclude: [/node_modules/],
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            'react',
-                            ['es2015', {modules: false}],
-                            'stage-0',
-                            "env"
-                        ],
-                    }
-                }],
+                query: {
+                    presets: [
+                        'react',
+                        'es2015',
+                        'stage-0',
+                        "env"
+                    ]
+                },
             },
         ],
     },
