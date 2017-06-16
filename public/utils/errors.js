@@ -1,9 +1,12 @@
 'use strict'
-class ValidationError extends Error {}
-class DBError extends Error {}
+class ValidationError extends Error {
+  constructor(...args) {
+    super(...args)
+    Error.captureStackTrace(this, ValidationError)
+  }
+}
 
 module.exports = {
-  ValidationError,
-  DBError
+  ValidationError
 }
 

@@ -73,6 +73,7 @@ class Registration extends Component {
     }
     console.log("Registration OK");
     this.props.createUser(userRef);
+
   }
 
   render() {

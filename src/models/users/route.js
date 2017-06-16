@@ -1,5 +1,5 @@
 'use strict';
-const {ValidationError, DBError} = require('./../../utils/errors');
+const {ValidationError} = require('./../../utils/errors');
 const
   Utils = require( './../../utils/validator'),
   UsersService = require('./service'),

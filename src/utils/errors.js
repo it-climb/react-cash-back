@@ -5,15 +5,8 @@ class ValidationError extends Error {
     Error.captureStackTrace(this, ValidationError)
   }
 }
-class DBError extends Error {
-  constructor(...args) {
-    super(...args)
-    Error.captureStackTrace(this, DBError)
-  }
-}
 
 module.exports = {
-  ValidationError,
-  DBError
+  ValidationError
 }
 

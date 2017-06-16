@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect}  from 'react-redux';
 import TitleTop         from 'TitleTop';
 import TitleMiddle      from '../title_middle/TitleMiddle';
 import TitleBottom      from '../title_bottom/TitleBottom';
 
-var TitleDashboard = React.createClass({
+class TitleDashboard extends Component {
 
-    render: function () {
+    render () {
         return (
             <div className = "dashboard">
                 <TitleTop/>
@@ -15,7 +15,7 @@ var TitleDashboard = React.createClass({
             </div>
         )
     }
-});
+}
 
 // export default TitleDashboard;
 export default connect()(TitleDashboard);
