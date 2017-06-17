@@ -1,6 +1,11 @@
 import * as Types from "../constants";
 import {ValidationError} from "./../utils/errors";
 
+export const inputUser = field => ({
+  type: Types.INPUT_USER,
+  field
+});
+
 const createData = user => {
   return {
     method: 'POST',
@@ -23,13 +28,13 @@ export const createUser = user => {
         return fetch("users", data);
       }
       if(res == 409){
-        throw new ValidationError('1 email is exists.');
+        throw new ValidationError('createUser email is exists.');
       }else{
         throw new Error('Error status = ' + res);
       }
     })
     .then(res => {
-      console.log('THEN res:', res);
+      console.log('fetch /users.then res:', res);
     })
     .catch(ValidationError => {
       console.log(ValidationError);
@@ -41,7 +46,6 @@ export const createUser = user => {
 
 export const loginUser = user => {
   console.log('login user:', user);
-
 }
 
 

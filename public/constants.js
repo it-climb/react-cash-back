@@ -1,1 +1,2 @@
 export const LOAD_PROFESSIONS_DONE = "LOAD_PROFESSIONS_DONE";
+export const INPUT_USER = "INPUT_USER";
