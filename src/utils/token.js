@@ -27,7 +27,7 @@ const generateToken = user => {
     expiresIn: config.auth.options.expiresIn,
   })
     .catch(err => {
-      throw  err;
+      throw err;
     });
 }
 

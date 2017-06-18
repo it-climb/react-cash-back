@@ -82,7 +82,7 @@ class Registration extends Component {
       .then(res => {
         if (Math.floor(res.status / 100) === 2) {
           //save to store userToken: userToken
-          console.log('regist 79 res:', res);
+          console.log('regist 79 res:', res, res.payload, res.body);
 
         } else {
           throw new Error('regist 77 Error: ' + res);

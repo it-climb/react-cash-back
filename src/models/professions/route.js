@@ -10,6 +10,7 @@ module.exports = [
     handler: (req, res) => {
       ProfessionsService.getAll()
       .then(testData=>{
+        console.log('src professions testData',testData);
           res.send(testData);
         })
       .catch(err=> {
