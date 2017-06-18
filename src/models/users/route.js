@@ -73,11 +73,12 @@ module.exports = [
           return generateToken(user);
         })
         .then(token =>{
-          console.log("users route create token", token);
           res.send(token);
+          // res.send(JSON.stringify(token.token));
         })
         .catch(ValidationError => {
-          console.log("users router75: ", ValidationError);
+          console.log("users router80 ValidationError: ", ValidationError);
+          res.send(ValidationError);
         })
         .catch(err => {
           console.error('err');

@@ -55,6 +55,7 @@ class Login extends Component {
     }
     console.log("Login OK");
     this.props.loginUser(userRef);
+    //fetch(url, {  credentials: 'include'   })
   }
 
   render() {

@@ -3,7 +3,11 @@ import {connect}  from 'react-redux';
 import PropTypes from "prop-types";
 import {validator} from './../../utils/validator';
 import {checkEmail, createUser} from './../../utils/user';
-import {inputUser, setEmailValidate, setUserToken} from './../../actions/user';
+import {
+  inputUser,
+  setEmailValidate,
+  setUserToken
+} from './../../actions/user';
 
 const selector = state => ({
   user: state.user,
@@ -67,8 +71,8 @@ class Registration extends Component {
           //save to store userEmailValidate: true //make default:false
           setEmailValidate(true);
           console.log('regist 67 setEmailValidate true');
-          return createUser(user);
-        }else{
+          return createUser(user)
+        } else {
           console.log('regist 72 setEmailValidate false');
           setEmailValidate(false);
           this.setState({emailClass: errClass});
@@ -79,17 +83,13 @@ class Registration extends Component {
           }
         }
       })
-      .then(res => {
-        if (Math.floor(res.status / 100) === 2) {
-          //save to store userToken: userToken
-          console.log('regist 79 res:', res, res.payload, res.body);
-
-        } else {
-          throw new Error('regist 77 Error: ' + res);
-        }
+      .then(token => { //json result
+        let time = token.expiresIn ? token.expiresIn : 60 * 60;
+        document.cookie = "cashback=" + token.token + "; " + time + "; path=/";
+        setUserToken(token);
       })
       .catch(err => {
-        console.log('registration 81 Error:', err);
+        console.log('registration 87 Error:', err);
       })
   }
 
@@ -191,7 +191,8 @@ class Registration extends Component {
   }
 }
 
-Registration.propTypes = {
+Registration
+  .propTypes = {
   user: object.isRequired,
   // createUser: func.isRequired,
   inputUser: func.isRequired,
@@ -200,7 +201,15 @@ Registration.propTypes = {
   professions: array.isRequired,
 };
 
-export default connect(selector, {
+export
+default
+
+connect(selector, {
   // createUser,
-  inputUser,  setEmailValidate, setUserToken,
-})(Registration);
+  inputUser, setEmailValidate, setUserToken,
+})
+
+(
+  Registration
+)
+;
