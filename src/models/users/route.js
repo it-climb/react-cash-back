@@ -3,6 +3,7 @@ const {ValidationError} = require('./../../utils/errors');
 const
   Utils = require( './../../utils/validator'),
   UsersService = require('./service'),
+  generateToken = require('./../../utils/token'),
   path = 'users';
 
 module.exports = [
@@ -65,11 +66,15 @@ module.exports = [
             console.log("1 email is not unique");
             throw new ValidationError("2 email is not unique");
           }
-          return UsersService.create(userObject);
+          return [UsersService.create(userObject), userObject];
         })
-        .then(data2 => {
-          res.send(data2);
-
+        .spread( (resultUserCreate, user) => {
+          console.log('users route 73 resultUserCreate:', resultUserCreate,' user:', user);
+          return generateToken(user);
+        })
+        .then(token =>{
+          console.log("users route create token", token);
+          res.send(token);
         })
         .catch(ValidationError => {
           console.log("users router75: ", ValidationError);

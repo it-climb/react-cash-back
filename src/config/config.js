@@ -11,7 +11,7 @@ module.exports = {
     mail: {
         user: 'spalahadvanced@gmail.com',
         password: 'spalahadvanced1'
-    }
+    },
     // amazonS3Credentials: {
     //     provider: 'amazon',
     //     accessKeyId: process.env.AMAZON_S3_KEY_ID,
@@ -21,11 +21,11 @@ module.exports = {
     //     images: 'test-images',
     //     attachments: 'test-attachments'
     // },
-    // auth: {
-    //     key: process.env.TEST_SIGNIN_PRIVATE_KEY || 'Insanely long and ultrasecure test private key goes here!',
-    //     rounds: 10,
-    //     options: {algorithm: 'HS512', expiresIn: 60 * 60 * 24 * 7}
-    // },
+    auth: {
+        // key: process.env.TEST_SIGNIN_PRIVATE_KEY || 'Insanely long and ultrasecure test private key goes here!',
+        // rounds: 10,
+        options: {expiresIn: 60 * 60 * 24 * 7}
+    }
     // redis: {
     //     //FIXME replace with QA redis later
     //     host: process.env.REDIS_HOST || '127.0.0.1',

@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect}  from 'react-redux';
 import PropTypes from "prop-types";
 import {validator} from './../../utils/validator';
-import {createUser, inputUser} from './../../actions/user';
+import {checkEmail, createUser} from './../../utils/user';
+import {inputUser, setEmailValidate, setUserToken} from './../../actions/user';
 
 const selector = state => ({
   user: state.user,
@@ -34,7 +35,8 @@ class Registration extends Component {
 
   _onSubmitForm(e) {
     e.preventDefault();
-    let user = this.props.user;
+    const {firstName, lastName, login, email, professionId, password, confirmPassword} = this.props.user;
+    let user = {firstName, lastName, login, email, professionId, password, confirmPassword};
     let errFields = [];
     for (var ref in user) {
       let fieldCl;
@@ -58,15 +60,36 @@ class Registration extends Component {
       return;
     }
     console.log("Registration Form Validation OK");
-    createUser(user)
+    checkEmail(user.email)
       .then(res => {
-        consol.log("registration 63 done:", res);
+        console.log('regist 65 checkEmail', res.status);
+        if (Math.floor(res.status / 100) === 2) {
+          //save to store userEmailValidate: true //make default:false
+          setEmailValidate(true);
+          console.log('regist 67 setEmailValidate true');
+          return createUser(user);
+        }else{
+          console.log('regist 72 setEmailValidate false');
+          setEmailValidate(false);
+          this.setState({emailClass: errClass});
+          if (res == 409) {
+            throw new ValidationError('createUser email is exists.');
+          } else {
+            throw new Error('regist 71 Error: ' + res);
+          }
+        }
       })
-      .catch(ValidationError => {
-        console.log('ValidationError: ', ValidationError);
+      .then(res => {
+        if (Math.floor(res.status / 100) === 2) {
+          //save to store userToken: userToken
+          console.log('regist 79 res:', res);
+
+        } else {
+          throw new Error('regist 77 Error: ' + res);
+        }
       })
       .catch(err => {
-        consol.log("registration 66 error:", err);
+        console.log('registration 81 Error:', err);
       })
   }
 
@@ -170,12 +193,14 @@ class Registration extends Component {
 
 Registration.propTypes = {
   user: object.isRequired,
-  createUser: func.isRequired,
+  // createUser: func.isRequired,
   inputUser: func.isRequired,
+  setEmailValidate: func.isRequired,
+  setUserToken: func.isRequired,
   professions: array.isRequired,
 };
 
 export default connect(selector, {
-  createUser,
-  inputUser,
+  // createUser,
+  inputUser,  setEmailValidate, setUserToken,
 })(Registration);
