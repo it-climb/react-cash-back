@@ -10,7 +10,7 @@ const generateToken = user => {
   if (_.isEmpty(user.email) || _.isEmpty(user.password)) {
     return Promise.reject(boom.badRequest("User email and password can not be empty"));
   }
-  const inpData = "" + user.email + user.password;
+  const inpData = user.email + "/" + user.password;
   return Promise.resolve({
     token: jwt.sign(
       {

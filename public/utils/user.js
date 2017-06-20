@@ -17,11 +17,11 @@ const createData = user => {
 }
 
 export const createUser = user => {
-  console.log("utils user createUser", user);
+  // console.log("utils user createUser", user);
   const data = createData(user);
   // return fetch("users", data);
   return fetch("users", data).then(res => {
-    console.log('utils user 24 res:', res);
+    // console.log('utils user 24 res:', res);
     if (Math.floor(res.status / 100) === 2) {
       return res.json();
     } else {

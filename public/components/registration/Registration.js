@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect}  from 'react-redux';
 import PropTypes from "prop-types";
+import {browserHistory} from "react-router";
 import {validator} from './../../utils/validator';
 import {checkEmail, createUser} from './../../utils/user';
 import {
@@ -30,6 +31,10 @@ class Registration extends Component {
       professionIdClass: startClass,
       confirmPasswordClass: startClass,
     };
+  }
+
+  _handleGoTo(goToPage) {
+    return browserHistory.push.bind(browserHistory, goToPage);
   }
 
   _handleChange(e) {
@@ -66,11 +71,11 @@ class Registration extends Component {
     console.log("Registration Form Validation OK");
     checkEmail(user.email)
       .then(res => {
-        console.log('regist 65 checkEmail', res.status);
+        // console.log('regist 65 checkEmail', res.status);
         if (Math.floor(res.status / 100) === 2) {
           //save to store userEmailValidate: true //make default:false
           setEmailValidate(true);
-          console.log('regist 67 setEmailValidate true');
+          // console.log('regist 67 setEmailValidate true');
           return createUser(user)
         } else {
           console.log('regist 72 setEmailValidate false');
@@ -87,6 +92,11 @@ class Registration extends Component {
         let time = token.expiresIn ? token.expiresIn : 60 * 60;
         document.cookie = "cashback=" + token.token + "; " + time + "; path=/";
         setUserToken(token);
+        console.log("registration 95 cookie", document.cookie);
+        // this.props.history.push("/");
+        // browserHistory.push("/");
+        this._handleGoTo("/");
+        // window.location.replace(`/`);
       })
       .catch(err => {
         console.log('registration 87 Error:', err);
@@ -97,7 +107,7 @@ class Registration extends Component {
     const {
       professions, firstName, lastName, login, email, professionId, password, confirmPassword
     } = this.props;
-    console.log('props:', this.props);
+    // console.log('registration 104 props:', this.props);
     let i = 0;
     return (
       <div className="container">

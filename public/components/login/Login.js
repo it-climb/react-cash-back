@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect}  from 'react-redux';
 import PropTypes from "prop-types";
+import {browserHistory} from "react-router";
 import {validator} from './../../utils/validator';
 import {loginUser} from './../../actions/user';
 
@@ -22,6 +23,10 @@ class Login extends Component {
       emailClass: startClass,
       passwordClass: startClass,
     };
+  }
+
+  _handleGoTo(goToPage) {
+    return browserHistory.push.bind(browserHistory, goToPage);
   }
 
   _handleChange(e) {

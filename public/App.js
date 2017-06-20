@@ -17,22 +17,27 @@ import './style/style.scss';
 
 const {func} = PropTypes;
 
+const routes = (
+  <Route path="/" component={Main}>
+    <IndexRoute component={TitleDashboard}/>
+    {/*<Route path="*" component={PageNotFound}/>*/}
+    <Route path="/registration" component={Registration}/>
+    <Route path="login" component={Login}/>
+    <Route path="forgot_password" component={ForgotPassword}/>
+  </Route>
+);
+
 class App extends Component {
 
   componentDidMount() {
     this.props.loadProfessions();
+    console.log('App 24 cookie', document.cookie);
   }
 
   render() {
     return (
       <Router history={hashHistory}>
-        <Route path="/" component={Main}>
-          <IndexRoute component={TitleDashboard}/>
-          {/*<Route path="*" component={NoMatch}/>*/}
-          <Route path="registration" component={Registration}/>
-          <Route path="login" component={Login}/>
-          <Route path="forgot_password" component={ForgotPassword}/>
-        </Route>
+        {routes}
       </Router>
     );
   }
