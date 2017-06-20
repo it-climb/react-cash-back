@@ -1,1 +1,4 @@
 export const LOAD_PROFESSIONS_DONE = "LOAD_PROFESSIONS_DONE";
+export const INPUT_USER = "INPUT_USER";
+export const SET_EMAIL_VALIDATE = "INPUT_USER";
+export const SET_USER_TOKEN = "INPUT_USER";

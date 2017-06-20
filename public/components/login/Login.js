@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect}  from 'react-redux';
 import PropTypes from "prop-types";
+import {browserHistory} from "react-router";
 import {validator} from './../../utils/validator';
 import {loginUser} from './../../actions/user';
 
@@ -17,11 +18,15 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
+      // email: "",
+      // password: "",
       emailClass: startClass,
       passwordClass: startClass,
     };
+  }
+
+  _handleGoTo(goToPage) {
+    return browserHistory.push.bind(browserHistory, goToPage);
   }
 
   _handleChange(e) {
@@ -55,6 +60,7 @@ class Login extends Component {
     }
     console.log("Login OK");
     this.props.loginUser(userRef);
+    //fetch(url, {  credentials: 'include'   })
   }
 
   render() {

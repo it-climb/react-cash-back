@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App, { AppContainer } from "./AppContainer";
+// import {withRouter} from 'react-router'
+// import {ConnectedRouter} from 'connected-react-router'
 import { Provider } from "react-redux";
+import App, { AppContainer } from "./AppContainer";
 import {store} from './store/store';
 import './style/style.scss';
 
+// const NonBlockApp = withRouter(App);
 /**
  * @param {Object} ReactElement
  * @param {Object} DOMElement
@@ -13,7 +16,7 @@ import './style/style.scss';
  */
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+      <App />
   </Provider>,
   document.getElementById("app")
 );

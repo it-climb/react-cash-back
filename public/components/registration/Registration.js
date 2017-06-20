@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {connect}  from 'react-redux';
 import PropTypes from "prop-types";
+import {browserHistory} from "react-router";
 import {validator} from './../../utils/validator';
-import {createUser} from './../../actions/user';
+import {checkEmail, createUser} from './../../utils/user';
+import {
+  inputUser,
+  setEmailValidate,
+  setUserToken
+} from './../../actions/user';
 
 const selector = state => ({
   user: state.user,
@@ -18,52 +24,39 @@ class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      login: "",
-      email: "",
-      professionId: "",
       firstNameClass: startClass,
       lastNameClass: startClass,
       loginClass: startClass,
       emailClass: startClass,
+      professionIdClass: startClass,
       confirmPasswordClass: startClass,
     };
   }
 
   _handleChange(e) {
-    let field = {[e.target.name]: e.target.value};
-    this.setState(field);
-    // console.log('39 onChange value:', e.target.value, ' name:', e.target.name, ' field:', field);
+    const field = {[e.target.name]: e.target.value.trim()};
+    this.props.inputUser(field);
   }
 
   _onSubmitForm(e) {
     e.preventDefault();
-    let userRef = {
-      firstName: this.refs.firstName.value.trim(),
-      lastName: this.refs.lastName.value.trim(),
-      login: this.refs.login.value.trim(),
-      email: this.refs.email.value.trim(),
-      password: this.refs.password.value.trim(),
-      confirmPassword: this.refs.confirmPassword.value.trim(),
-      professionId: this.refs.professionId.value.trim(),
-    }
+    const {firstName, lastName, login, email, professionId, password, confirmPassword} = this.props.user;
+    let user = {firstName, lastName, login, email, professionId, password, confirmPassword};
     let errFields = [];
-    for (var ref in userRef) {
-      if (validator(userRef[ref], ref)) {
-        let fieldClassName = ref + 'Class';
-        let fieldCl = {[fieldClassName]: okClass}
-        this.setState(fieldCl);
+    for (var ref in user) {
+      let fieldCl;
+      let fieldClassName = ref + 'Class';
+      if (validator(user[ref], ref)) {
+        fieldCl = {[fieldClassName]: okClass}
       } else {
         errFields.push(ref);
-        let fieldClassName = ref + 'Class';
-        let fieldCl = {[fieldClassName]: errClass}
-        this.setState(fieldCl);
-        console.log("registration 64 errror:", ref);
+        fieldCl = {[fieldClassName]: errClass}
+        console.log("registration 85 eror:", ref);
       }
+      this.setState(fieldCl);
     }
-    if (userRef.password !== userRef.confirmPassword) {
-      console.log('registration 68: password !== confirmPassword');
+    if (user.password !== user.confirmPassword) {
+      console.log('registration 89: password !== confirmPassword');
       errFields.push('confirmPassword');
       this.setState({confirmPasswordClass: errClass});
     }
@@ -71,12 +64,43 @@ class Registration extends Component {
       console.log('registration errors in:', errFields);
       return;
     }
-    console.log("Registration OK");
-    this.props.createUser(userRef);
+    console.log("Registration Form Validation OK");
+    checkEmail(user.email)
+      .then(res => {
+        // console.log('regist 65 checkEmail', res.status);
+        if (Math.floor(res.status / 100) === 2) {
+          //save to store userEmailValidate: true //make default:false
+          setEmailValidate(true);
+          // console.log('regist 67 setEmailValidate true');
+          return createUser(user)
+        } else {
+          console.log('regist 72 setEmailValidate false');
+          setEmailValidate(false);
+          this.setState({emailClass: errClass});
+          if (res == 409) {
+            throw new ValidationError('createUser email is exists.');
+          } else {
+            throw new Error('regist 71 Error: ' + res);
+          }
+        }
+      })
+      .then(token => { //json result
+        let time = token.expiresIn ? token.expiresIn : 60 * 60;
+        document.cookie = "cashback=" + token.token + "; " + time + "; path=/";
+        setUserToken(token);
+        // console.log("registration 95 cookie", document.cookie);
+
+        this.props.router.push("/");
+      })
+      .catch(err => {
+        console.log('registration 87 Error:', err);
+      })
   }
 
   render() {
-    const {professions} = this.props;
+    const {
+      professions, firstName, lastName, login, email, professionId, password, confirmPassword
+    } = this.props;
     let i = 0;
     return (
       <div className="container">
@@ -101,33 +125,33 @@ class Registration extends Component {
                 <div style={{marginBottom: '25px'}} className={this.state.firstNameClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
                   <input id="regist-firstName" type="text" className="form-control" name="firstName"
-                         placeholder="firstName" ref="firstName" value={this.state.firstName}
+                         placeholder="firstName" ref="firstName" value={firstName}
                          onChange={this._handleChange.bind(this)}/>
                 </div>
 
                 <div style={{marginBottom: '25px'}} className={this.state.lastNameClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
                   <input id="regist-lastName" type="text" className="form-control" name="lastName"
-                         placeholder="lastName" ref="lastName" value={this.state.lastName}
+                         placeholder="lastName" ref="lastName" value={lastName}
                          onChange={this._handleChange.bind(this)}/>
                 </div>
 
                 <div style={{marginBottom: '25px'}} className={this.state.loginClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
                   <input id="regist-login" type="text" className="form-control" name="login" placeholder="login"
-                         ref="login" value={this.state.login} onChange={this._handleChange.bind(this)}/>
+                         ref="login" value={login} onChange={this._handleChange.bind(this)}/>
                 </div>
 
                 <div style={{marginBottom: '25px'}} className={this.state.emailClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
                   <input id="regist-email" type="text" className="form-control" name="email" placeholder="email"
-                         ref="email" value={this.state.email} onChange={this._handleChange.bind(this)}/>
+                         ref="email" value={email} onChange={this._handleChange.bind(this)}/>
                 </div>
 
-                <div style={{marginBottom: '25px'}} className={this.state.emailClass}>
+                <div style={{marginBottom: '25px'}} className={this.state.professionIdClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
                   <select id="regist-profession" className="form-control" name="professionId" ref="professionId"
-                          onChange={this._handleChange.bind(this)}>
+                          value={professionId} onChange={this._handleChange.bind(this)}>
                     {
                       professions.map((profession) => {
                         return <option key={"profession" + i++}
@@ -140,13 +164,15 @@ class Registration extends Component {
                 <div style={{marginBottom: '25px'}} className="input-group">
                   <span className="input-group-addon"><i className="glyphicon glyphicon-lock"></i></span>
                   <input id="regist-password" type="password" className="form-control" name="password"
-                         placeholder="password" ref="password" onChange={this._handleChange.bind(this)}/>
+                         placeholder="password" ref="password" value={password}
+                         onChange={this._handleChange.bind(this)}/>
                 </div>
 
                 <div style={{marginBottom: '25px'}} className={this.state.confirmPasswordClass}>
                   <span className="input-group-addon"><i className="glyphicon glyphicon-lock"></i></span>
-                  <input id="regist-confirm-password" type="password" className="form-control" name="confirm-password"
-                         placeholder="confirm password" ref="confirmPassword" onChange={this._handleChange.bind(this)}/>
+                  <input id="regist-confirm-password" type="password" className="form-control" name="confirmPassword"
+                         placeholder="confirm password" ref="confirmPassword" value={confirmPassword}
+                         onChange={this._handleChange.bind(this)}/>
                 </div>
 
                 <div style={{marginTop: '10px'}} className="form-group">
@@ -168,12 +194,25 @@ class Registration extends Component {
   }
 }
 
-Registration.propTypes = {
+Registration
+  .propTypes = {
   user: object.isRequired,
-  createUser: func.isRequired,
+  // createUser: func.isRequired,
+  inputUser: func.isRequired,
+  setEmailValidate: func.isRequired,
+  setUserToken: func.isRequired,
   professions: array.isRequired,
 };
 
-export default connect(selector, {
-  createUser,
-})(Registration);
+export
+default
+
+connect(selector, {
+  // createUser,
+  inputUser, setEmailValidate, setUserToken,
+})
+
+(
+  Registration
+)
+;

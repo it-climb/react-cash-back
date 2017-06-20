@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect}  from 'react-redux';
+// import {connect}  from 'react-redux';
 import {Link, browserHistory}   from 'react-router';
-import _ from 'lodash';
+// import _ from 'lodash';
 import {Row, Col, Form, FormGroup, FormControl, Button, Alert, ControlLabel, Navbar, Table} from "react-bootstrap";
 
 class TitleTopNav extends React.Component {
-  _handleGoTo(goToPage) {
-    return browserHistory.push.bind(browserHistory, goToPage);
-  }
+  // _handleGoTo(goToPage) {
+  //   return browserHistory.push.bind(browserHistory, goToPage);
+  // }
 
   render() {
     return (
