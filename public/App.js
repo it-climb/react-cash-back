@@ -18,13 +18,13 @@ import './style/style.scss';
 const {func} = PropTypes;
 
 const routes = (
-  <Route path="/" component={Main}>
-    <IndexRoute component={TitleDashboard}/>
-    {/*<Route path="*" component={PageNotFound}/>*/}
-    <Route path="/registration" component={Registration}/>
-    <Route path="login" component={Login}/>
-    <Route path="forgot_password" component={ForgotPassword}/>
-  </Route>
+    <Route path="/" component={Main} >
+      <IndexRoute component={TitleDashboard}/>
+      {/*<Route path="*" component={PageNotFound}/>*/}
+      <Route path="/registration" component={Registration}/>
+      <Route path="login" component={Login}/>
+      <Route path="forgot_password" component={ForgotPassword}/>
+    </Route>
 );
 
 class App extends Component {

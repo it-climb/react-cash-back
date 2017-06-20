@@ -33,10 +33,6 @@ class Registration extends Component {
     };
   }
 
-  _handleGoTo(goToPage) {
-    return browserHistory.push.bind(browserHistory, goToPage);
-  }
-
   _handleChange(e) {
     const field = {[e.target.name]: e.target.value.trim()};
     this.props.inputUser(field);
@@ -92,11 +88,9 @@ class Registration extends Component {
         let time = token.expiresIn ? token.expiresIn : 60 * 60;
         document.cookie = "cashback=" + token.token + "; " + time + "; path=/";
         setUserToken(token);
-        console.log("registration 95 cookie", document.cookie);
-        // this.props.history.push("/");
-        // browserHistory.push("/");
-        this._handleGoTo("/");
-        // window.location.replace(`/`);
+        // console.log("registration 95 cookie", document.cookie);
+
+        this.props.router.push("/");
       })
       .catch(err => {
         console.log('registration 87 Error:', err);
@@ -107,7 +101,6 @@ class Registration extends Component {
     const {
       professions, firstName, lastName, login, email, professionId, password, confirmPassword
     } = this.props;
-    // console.log('registration 104 props:', this.props);
     let i = 0;
     return (
       <div className="container">

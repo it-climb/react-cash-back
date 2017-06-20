@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {withRouter} from 'react-router'
-import {ConnectedRouter} from 'connected-react-router'
+// import {withRouter} from 'react-router'
+// import {ConnectedRouter} from 'connected-react-router'
 import { Provider } from "react-redux";
 import App, { AppContainer } from "./AppContainer";
 import {store} from './store/store';
 import './style/style.scss';
 
-const NonBlockApp = withRouter(App);
+// const NonBlockApp = withRouter(App);
 /**
  * @param {Object} ReactElement
  * @param {Object} DOMElement
@@ -16,9 +16,7 @@ const NonBlockApp = withRouter(App);
  */
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <NonBlockApp />
-    </ConnectedRouter>
+      <App />
   </Provider>,
   document.getElementById("app")
 );
